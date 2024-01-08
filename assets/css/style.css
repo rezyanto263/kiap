@@ -1,0 +1,425 @@
+/* Desktop */
+@media(min-width:992px) {
+    
+    .panduan-menu {
+        height: calc(100vh);
+        z-index: 1;
+        display: block;
+    }
+    .btn-panduan {
+        display: none;
+    }
+    .nav-sm-profile {
+        display: none;
+    }
+    .dropdown-item {
+        color: #F875AA !important;
+        transition: ease-in-out 0.3s;
+    }
+    .dropdown-item:hover, .dropdown-item:active {
+        background-color: #F875AA !important;
+        color: #FFFFFF !important;
+        border-radius: 2px;
+    }
+}
+
+/* Tablet $ Desktop */
+@media (min-width:601px) {
+    .carousel-inner {
+        display: flex;
+    }
+    .carousel-item{
+        display: block;
+        margin-right: 0;
+        flex: 0 0 calc(100%/3);
+    }
+    .custom-table {
+        height: 500px;
+    }
+    .nomor-antrian {
+        font-size: 70px;
+    }
+    .pemeriksaan .owl-dots {
+        display: block !important;
+    }
+}
+
+/* Mobile & Tablet */
+@media (max-width:991.5px) {
+    .panduan-menu {
+        display: none;
+    }
+    .btn-panduan, .btn-panduan:hover, .btn-panduan:active {
+        border: 1px solid rgb(255, 255, 255, 0.1);
+        color: rgb(255, 255, 255, 0.85);
+    }
+    .btn-panduan:focus:not(:focus-visible) {
+        box-shadow: none;
+        outline: 4px solid rgb(255, 255, 255, 0.6);
+        border: 1px solid rgb(255, 255, 255, 0.1);
+        color: rgb(255, 255, 255, 0.85);    
+    }
+    .custom-nav-profile {
+        display: none;
+    }
+    .nav-item {
+        text-align: center;
+    }
+    .dropdown-menu:is(.show) {
+        text-align: center;
+        border: 0;
+        background-color: #F875AA;
+    }
+    .dropdown-item {
+        color: #FFFFFF;
+    }
+    .card-antrian .card-header {
+        font-size: 12px;
+    }
+    .nav-sm-profile {
+        display: block;
+    }
+    .nav-md-profile {
+        display: none;
+    }
+    .pemeriksaan .owl-dots {
+        display: block !important;
+    }
+}
+
+/* Mobile */
+@media (max-width:600px) {
+    .nav-name-panduan {
+        display: none;
+    }
+    .custom-table {
+        height: 600px;
+    }
+    .nomor-antrian {
+        font-size: 55px;
+    }
+    .jumbotron .btn-secondary, .jumbotron i {
+        font-size: 15px;
+    }
+    .jumbotron .alert {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 476.5px) {
+    .jumbotron .btn-secondary, .jumbotron i {
+        font-size: 19px;
+        padding-top: 9.5px;
+        padding-bottom: 9.5px;
+    }
+}
+
+@media (max-width: 375.5px) {
+    .custom-table {
+        height: 500px;
+    }
+    .nomor-antrian {
+        font-size: 35px;
+    }
+    .card-antrian {
+        padding: 0;
+    }
+    .card-antrian .card-header {
+        font-size: 8px;
+        margin: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .jumbotron .btn-secondary, .jumbotron i {
+        font-size: 14px;
+        padding-top: 13.2px;
+        padding-bottom: 13.2px;
+    }
+    .jumbotron i {
+        padding: 0;
+    }
+    .jumbotron .alert {
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 297.5px){
+    .jumbotron .btn-secondary, .jumbotron i {
+        font-size: 11px !important;
+        padding-top: 7.5x !important;
+        padding-bottom: 7.5px !important;
+    }
+    .jumbotron .alert {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 297.5px) {
+    .dropdown-item {
+        color: #FFFFFF;
+        transition: ease-in-out 0.3s;
+    }
+    .dropdown-item:hover, .dropdown-item:active {
+        background-color: #FFFFFF;
+        color: #F875AA;
+        border-radius: 2px;
+    }
+}   
+
+* {
+    font-family: 'Open Sans'; 
+    font-weight: 400;
+}
+
+tbody * {
+    font-family: 'Roboto Mono' !important;
+    font-weight: 300;
+    font-size: 12px;
+}
+.jumbotron {
+    background-size: cover;
+    background-color: #F875AA;
+    color: #FFFFFF;
+}
+
+.jumbotron .container {
+    min-height: 100svh;
+}
+
+.riwayat h1 {
+    background-color: #FFFFFF;
+    color: #F875AA;
+}
+
+.custom-table {
+    outline: 3px solid rgb(248, 117, 170, 0.6);
+}
+
+.table {
+    --bs-table-hover-bg: rgba(255, 220, 233, 0.6);
+}
+
+thead {
+    --bs-table-bg: rgb(248, 117, 170, 0.8);
+    --bs-table-color: #FFFFFF;
+}
+
+.navbar {
+    z-index: 2;
+}
+.custom-table tr {
+    z-index: 1;
+}
+
+.custom-nav-link {
+    background-color: #FFFFFF;
+    border: 1px solid #F875AA;
+    color: #F875AA;
+    transition: ease-in-out 0.3s;
+}
+
+.custom-nav-link:hover {
+    background-color: #F875AA;
+    border: 1px solid #F875AA;
+    color: #FFFFFF;
+}
+
+.nav-pills .custom-nav-link.active {
+    background-color: #F875AA;
+    border: 1px solid #F875AA;
+    color: #FFFFFF;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #F875AA;
+    color: #FFFFFF;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button {
+    color: #F875AA;
+}
+
+.btn-secondary, .btn-secondary:first-child:active {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    color: #F875AA;
+    transition: ease-in-out 0.3s;
+}
+
+.btn-secondary:hover  {
+    background-color: #F875AA;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.custom-search:focus {
+    box-shadow: none;
+    outline: 4px solid rgba(255, 62, 139, 0.6);
+}
+
+.panduan {
+    background-color: #f7f7f7;
+}
+
+.card-panduan {
+    margin: 0.5em;
+    transition: ease-in-out 0.1s;
+    text-decoration: none;
+}
+
+.card-panduan:hover, .card-panduan:active {
+    outline: 4px solid rgba(255, 62, 139, 0.6);
+}
+
+.owl-stage-outer {
+    position: relative;
+}
+
+.owl-nav {
+    text-align: unset !important;
+}
+
+.owl-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-100%);
+}
+
+.owl-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-100%);
+}
+
+.owl-next:hover, .owl-next:active, .owl-prev:hover, .owl-prev:active {
+    background: transparent !important;
+}
+
+.owl-next span, .owl-prev span {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 4.5px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #F875AA;
+    border-radius: 50%;
+}
+
+.owl-next span:hover, .owl-prev span:hover {
+    outline: 1px solid rgb(248, 117, 170, 0.6);
+    background-color: rgb(255, 255, 255, 0.6);
+    color: #F875AA;
+    transition: ease-in-out 0.3s;
+}
+
+.sosmed .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 70px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.sosmed .fa:hover {
+    opacity: 0.8;
+    transition: ease-in-out 0.3s;
+}
+
+.dropdown-menu {
+    animation: rotateX 300ms ease-in-out forwards;
+    transform-origin: top center;
+    padding: 0;
+}
+
+.riwayat-page {
+    background-color: #f7f7f7;
+    font-family: 'Roboto Mono';
+}
+
+.pemeriksaan .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-decoration: none;
+}
+
+.pemeriksaan .card:hover { 
+    transition: ease-in-out 0.1s;
+    outline: 3px solid #F875AA;
+}
+
+.pemeriksaan .card-title {
+    font-family: 'Roboto Mono';
+    font-size: 12px;
+    background-color: #F875AA;
+    color: #FFFFFF;
+    border-top-left-radius: 20px;
+}
+
+.pemeriksaan .card-text {
+    font-family: 'Roboto Mono';
+}
+
+.pemeriksaan .owl-stage, .pemeriksaan .card {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modal .modal-body *, .modal-title {
+    font-family: 'Roboto Mono';
+}
+
+.modal .btn-close:focus {
+    box-shadow: none;
+    outline: 3px solid rgb(255, 255, 255, 0.6);
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+
+@keyframes growOut {
+    0% {
+        transform: scale(0)
+    }
+    80% {
+        transform: scale(1.1)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes rotateX {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg);
+    }
+    50% {
+        transform: rotateX(-20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
