@@ -90,6 +90,12 @@ class M_people extends CI_Model
         $this->db->trans_start();
 
         $id_ibu = $this->input->post('nik');
+        $password = $this->input->post('password');
+        $query = $this->db->get_where('ibu', array('nik_ibu' => $id_ibu));
+        $row = $query->row_array();
+        if (!($row['password'] == $password)) {
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+        }
         date_default_timezone_set('Asia/Kuala_Lumpur');
         $ibu = [
             'nik_ibu' => htmlspecialchars($this->input->post('nik')),
@@ -101,10 +107,7 @@ class M_people extends CI_Model
             "no_telp" => htmlspecialchars($this->input->post('no_telp')),
             "tgl_lahir" => htmlspecialchars($this->input->post('tgl_lahir')),
             "alamat" => htmlspecialchars($this->input->post('alamat')),
-            'password' => password_hash(
-                $this->input->post('password'),
-                PASSWORD_DEFAULT
-            ),
+            'password' => $password,
             'date_created' => date('Y-m-d H:i:s')
         ];
 
