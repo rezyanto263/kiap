@@ -136,10 +136,9 @@ class M_people extends CI_Model
     {
         $id_petugas = $this->input->post('id');
         $password = $this->input->post('password');
-        $this->load->model('M_sess');
-        $row = $this->db->get_where('petugas', array('id_petugas' => $id_petugas))->row_array();
-        
-        if (!(password_verify($row['password'], $password))) {
+        $query = $this->db->get_where('petugas', array('id_petugas' => $id_petugas));
+        $row = $query->row_array();
+        if (!($row['password'] == $password)) {
             $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         }
 
