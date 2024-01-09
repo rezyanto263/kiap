@@ -47,6 +47,12 @@ class M_people extends CI_Model
         return $data;
     }
 
+    public function count_dokter()
+    {
+        $data = $this->db->count_all_results('dokter');
+        return $data;
+    }
+
 
     public function detailIbu($id)
     {
@@ -68,13 +74,15 @@ class M_people extends CI_Model
             "gol_darah" => $this->input->post('gol_darah'),
             "no_telp" => $this->input->post('no_telp'),
             "pekerjaan" => $this->input->post('pekerjaan'),
+            "pendidikan" => $this->input->post('pendidikan'),
+            "tempat_lahir" => $this->input->post('tempat_lahir'),
             "tgl_lahir" => $this->input->post('tgl_lahir'),
             "alamat" => $this->input->post('alamat'),
             "nama_suami" => $this->input->post('nama_suami'),
             'password' => password_hash(
                 $this->input->post('password'),
                 PASSWORD_DEFAULT
-            )
+            ),
         ];
 
         $this->db->insert('ibu', $data);
@@ -82,8 +90,23 @@ class M_people extends CI_Model
 
     public function hapus_i_data($nik_ibu)
     {
-        $this->db->where('nik_ibu', $nik_ibu);
-        $this->db->delete('ibu');
+        $cekAnak = $this->db->get_where('anak', array('nik_ibu' => $nik_ibu))->num_rows();
+        
+        if ($cekAnak > 0) {
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-danger" role="alert">
+            Data Gagal Dihapus! Data ibu ini memiliki anak! </div>'
+            );
+        } else {
+            $this->db->where('nik_ibu', $nik_ibu);
+            $this->db->delete('ibu');
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-success" role="alert">
+            Data Berhasil Dihapus! </div>'
+            );
+        }
     }
 
     public function edit_ibu()
@@ -105,8 +128,10 @@ class M_people extends CI_Model
             "agama" => $this->input->post('agama'),
             "gol_darah" => $this->input->post('gol_darah'),
             "no_telp" => htmlspecialchars($this->input->post('no_telp')),
-            "tgl_lahir" => htmlspecialchars($this->input->post('tgl_lahir')),
             "pekerjaan" => htmlspecialchars($this->input->post('pekerjaan')),
+            "pendidikan" => htmlspecialchars($this->input->post('pendidikan')),
+            "tempat_lahir" => htmlspecialchars($this->input->post('tempat_lahir')),
+            "tgl_lahir" => htmlspecialchars($this->input->post('tgl_lahir')),
             "alamat" => htmlspecialchars($this->input->post('alamat')),
             "nama_suami" => htmlspecialchars($this->input->post('nama_suami')),
             'password' => $password,
@@ -170,31 +195,71 @@ class M_people extends CI_Model
     public function proses_tambah_anak()
     {
         $data = [
-            "nik_anak" => htmlspecialchars($this->input->post('nik')),
+            "nik_anak" => htmlspecialchars($this->input->post('nik_anak')),
             "nama_anak" => htmlspecialchars($this->input->post('nama')),
-            "tgl_lahir" => htmlspecialchars($this->input->post('tgl_lahir')),
+            "nik_ibu" => htmlspecialchars($this->input->post('nik_ibu')),
+            "tgl_lahir" => $this->input->post('tgl_lahir'),
             "tb_lahir" => htmlspecialchars($this->input->post('tb_lahir')),
             "bb_lahir" => htmlspecialchars($this->input->post('bb_lahir')),
             "jenis_kelamin" => htmlspecialchars($this->input->post('jenis_kelamin')),
-            "lingkar_kepala" => htmlspecialchars($this->input->post('lingkar_kepala')),
+            "lk_lahir" => $this->input->post('lk_lahir'),
         ];
 
-        $this->db->insert('anak', $data);
+        $cekIbu = $this->db->get_where('ibu', array('nik_ibu' => $this->input->post('nik_ibu')))->num_rows();
+        if ($cekIbu == 0) {
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-danger" role="alert">
+            Data Gagal Ditambahkan! NIK Ibu tidak ditemukan!</div>'
+            );
+        }else {
+            $this->db->insert('anak', $data);
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-success" role="alert">
+            Data Berhasil Ditambahkan! </div>'
+            );
+        }
     }
 
     public function edit_anak()
-    {
-        $nik = $this->input->post('nik');
+    {   
+
+        $nik = $this->input->post('nik_anak');
+        date_default_timezone_set('Asia/Kuala_Lumpur');
         $update = [
+            "nik_anak" => htmlspecialchars($this->input->post('nik_anak')),
             "nama_anak" => htmlspecialchars($this->input->post('nama')),
-            "tgl_lahir" => htmlspecialchars($this->input->post('tgl_lahir')),
+            "nik_ibu" => htmlspecialchars($this->input->post('nik_ibu')),
+            "tgl_lahir" => $this->input->post('tgl_lahir'),
             "tb_lahir" => htmlspecialchars($this->input->post('tb_lahir')),
             "bb_lahir" => htmlspecialchars($this->input->post('bb_lahir')),
             "jenis_kelamin" => htmlspecialchars($this->input->post('jenis_kelamin')),
-            "lingkar_kepala" => htmlspecialchars($this->input->post('lingkar_kepala')),
+            "lk_lahir" => $this->input->post('lk_lahir'),
+            'date_created' => date('Y-m-d H:i:s')
         ];
-        $this->db->where('nik_anak', $nik);
-        $this->db->update('anak', $update);
+        $cekIbu = $this->db->get('ibu')->result_array();
+        $ada = false;
+        foreach ($cekIbu as $key) : {
+            if ($key['nik_ibu'] == $this->input->post('nik_ibu')) {
+                $ada = true;
+            }
+        } endforeach;
+        if (!($ada)) {
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-danger" role="alert">
+            Data Gagal Diubah! NIK Ibu tidak ditemukan!</div>'
+            );
+        }else {
+            $this->db->where('nik_anak', $nik);
+            $this->db->update('anak', $update);
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-success" role="alert">
+            Data Berhasil Diubah! </div>'
+            );
+        } 
     }
 
     public function hapus_anak($nik_anak)

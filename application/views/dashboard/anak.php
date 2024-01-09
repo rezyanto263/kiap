@@ -21,11 +21,12 @@
                             <th>NIK Anak</th>
                             <th>NIK Ibu</th>
                             <th>Nama Anak</th>
+                            <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
                             <th>Tinggi Badan</th>
                             <th>Berat Badan</th>
-                            <th>Jenis Kelamin</th>
                             <th>Lingkar Kepala</th>
+                            <th>Waktu Edit</th>
                             <td>Opsi</td>
                         </tr>
                     </thead>
@@ -41,9 +42,6 @@
                                 <td><?= $key['nik_anak']; ?></td>
                                 <td><?= $key['nik_ibu']; ?></td>
                                 <td><?= $key['nama_anak']; ?></td>
-                                <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
-                                <td><?= $key['tb_lahir']; ?> mm</td>
-                                <td><?= $key['bb_lahir']; ?> Kg</td>
                                 <td><?php if ($key['jenis_kelamin'] == 'L') {
                                         echo 'Laki-Laki';
                                     } else if ($key['jenis_kelamin'] == 'P') {
@@ -52,7 +50,11 @@
                                         echo '--';
                                     };
                                     ?></td>
-                                <td><?= $key['lingkar_kepala']; ?></td>
+                                <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
+                                <td><?= $key['tb_lahir']; ?> cm</td>
+                                <td><?= $key['bb_lahir']; ?> kg</td>
+                                <td><?= $key['lk_lahir']; ?> cm</td>
+                                <td><?= $key['date_created']; ?></td>
                                 <td>
                                     <center>
                                         <!-- btn info -->
@@ -90,7 +92,8 @@
                     <div class="modal-body">
                         <form action="<?= base_url('dashboard/people/edit_anak') ?>" method="post">
                             <div class="row">
-                                <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
+
+                                <input type="text" name="nik_anak" placeholder="Masukkan NIK Anak" class="form-control" value="<?= $anak['nik_anak']?>" hidden required>
 
                                 <div class="form-group">
                                     <label for="nik_ibu">NIK Ibu</label>
@@ -98,6 +101,7 @@
                                 </div>
 
                                 <div class="col-md-6">
+
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
                                         <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
@@ -109,19 +113,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="tb_lahir">Tinggi Badan</label>
-                                        <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="bb_lahir">Berat Badan</label>
-                                        <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" value="<?= $anak['bb_lahir'] ?>">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="jenis_kelamin">Jenis</label>
+                                        <label for="jenis_kelamin">Jenis Kelamin</label>
                                         <select name="jenis_kelamin" id="" class="form-control" required>
                                             <option selected hidden disabled class="form-control" value="">-- Jenis Kelamin --</option>
                                             <option value="L" <?= $anak['jenis_kelamin'] == "L" ? "selected" : null ?>>Laki-Laki</option>
@@ -129,10 +121,34 @@
                                         </select>
                                     </div>
 
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    
                                     <div class="form-group">
-                                        <label for="lingkar_kepala">Lingkar Kepala</label>
-                                        <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lingkar_kepala'] ?>" required>
+                                        <label for="tb_lahir">Tinggi Badan</label>
+                                        <div class="input-group">
+                                            <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>" aria-describedby="basic-addon1">
+                                            <span class="input-group-text" id="basic-addon1">cm</span>
+                                        </div>
                                     </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="bb_lahir">Berat Badan</label>
+                                        <div class="input-group">
+                                            <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" value="<?= $anak['bb_lahir'] ?>" aria-describedby="basic-addon2">
+                                            <span class="input-group-text" id="basic-addon2">kg</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="lk_lahir">Lingkar Kepala</label>
+                                        <div class="input-group">
+                                            <input type="text" name="lk_lahir" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lk_lahir'] ?>" aria-describedby="basic-addon3">
+                                            <span class="input-group-text" id="basic-addon3">cm</span>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="modal-footer">
@@ -163,7 +179,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
+                        <input type="hidden" name="nik_anak" value="<?= $anak['nik_anak'] ?>">
                         Anda yakin ingin menghapus data ini?
                         Tindakan ini tidak dapat dibatalkan, pastikan Anda telah mempertimbangkan dengan cermat sebelum melanjutkan.
                     </div>
@@ -193,8 +209,8 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input type="text" name="nik" placeholder="Masukkan NIK" class="form-control" required>
+                                <label for="nik_anak">NIK Anak</label>
+                                <input type="text" name="nik_anak" placeholder="Masukkan NIK Anak" class="form-control" required>
                             </div>
 
                             <div class="form-group">
@@ -227,8 +243,8 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="lingkar_kepala">Lingkar Kepala</label>
-                                <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" >
+                                <label for="lk_lahir">Lingkar Kepala</label>
+                                <input type="text" name="lk_lahir" placeholder="Lingkar Kepala" class="form-control" >
                             </div>
 
                             <div class="form-group">

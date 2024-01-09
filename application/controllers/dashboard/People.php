@@ -89,11 +89,7 @@ class People extends CI_Controller {
     public function hapus_i_data($nik_ibu)
     {
         $this->M_people->hapus_i_data($nik_ibu);
-        $this->session->set_flashdata(
-            'pesan',
-            '<div class="alert alert-success" role="alert">
-        Data Berhasil Dihapus! </div>'
-        );
+        
         redirect('dashboard/people/tb_ibu');
     }
 
@@ -148,22 +144,14 @@ class People extends CI_Controller {
     public function proses_tambah_anak()
     {
         $this->M_people->proses_tambah_anak();
-        $this->session->set_flashdata(
-            'pesan',
-            '<div class="alert alert-success" role="alert">
-        Data Berhasil Ditambahkan! </div>'
-        );
+        
         redirect('dashboard/people/tb_anak');
     }
 
     public function edit_anak()
     {
         $this->M_people->edit_anak();
-        $this->session->set_flashdata(
-            'pesan',
-            '<div class="alert alert-success" role="alert">
-        Data Berhasil Diubah! </div>'
-        );
+        
         redirect('dashboard/people/tb_anak');
     }
 

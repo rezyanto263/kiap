@@ -34,7 +34,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Daftar Dokter</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_anak; ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_dokter; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user fa-2x text-gray-300"></i>
