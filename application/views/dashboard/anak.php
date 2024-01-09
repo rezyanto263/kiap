@@ -18,7 +18,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
+                            <th>NIK Anak</th>
+                            <th>NIK Ibu</th>
                             <th>Nama Anak</th>
                             <th>Tanggal Lahir</th>
                             <th>Tinggi Badan</th>
@@ -38,6 +39,7 @@
                             <tr>
                                 <td><?= $id++ ?></td>
                                 <td><?= $key['nik_anak']; ?></td>
+                                <td><?= $key['nik_ibu']; ?></td>
                                 <td><?= $key['nama_anak']; ?></td>
                                 <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
                                 <td><?= $key['tb_lahir']; ?> mm</td>

@@ -55,14 +55,15 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Auth
 $route['login'] = 'auth/index';
+$route['logout'] = 'auth/logout';
 $route['register-ibu'] = 'auth/regis_ibu';
 
 // User
-$route['home'] = 'user/Home';
-$route['riwayat'] = 'user/Riwayat';
-$route['panduan'] = 'user/Panduan';
-$route['profil'] = 'user/Profil';
-$route['profil/edit'] = 'user/Profil/edit';
+$route['home'] = 'user/home';
+$route['riwayat'] = 'user/riwayat';
+$route['panduan'] = 'user/panduan';
+$route['profil'] = 'user/profil';
+$route['profil/edit'] = 'user/profil/edit';
 
 // Dashboard
 $route['dashboard'] = 'dashboard/dashboard/index';

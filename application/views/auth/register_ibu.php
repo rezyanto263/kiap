@@ -39,12 +39,12 @@
                         <div class="mb-4 text-start custom-input">
                             <select class="form-select active" name="agama" id="agama" value="<?= set_value('agama'); ?>" style="border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem;">
                                 <option disabled selected style="display: none;">Pilih Agama</option>
-                                <option value="islam">Islam</option>
-                                <option value="hindu">Hindu</option>
-                                <option value="buddha">Buddha</option>
-                                <option value="kristen">Kristen</option>
-                                <option value="katolik">Katolik</option>
-                                <option value="konghuchu">Konghuchu</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Konghuchu">Konghuchu</option>
                             </select>
                             <?= form_error('agama', '<small class="text-danger pl-5">', '</small>') ?>
                         </div>

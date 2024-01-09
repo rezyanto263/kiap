@@ -11,7 +11,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">KIAp<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">KIAP<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -23,7 +23,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href=<?php echo base_url("dashboard/dashboard") ?>>
+                <a class="nav-link" href=<?php echo base_url("dashboard") ?>>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -38,7 +38,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fas fa-fw fa-solid fa-user-nurse"></i>
                     <span>User</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -48,13 +48,6 @@
                         <a class="collapse-item" href="<?= base_url('dashboard/People/tb_dokter') ?>">Dokter</a>
                     </div>
                 </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href=<?php echo base_url("dashboard/people/profile") ?>>
-                    <i class="fas fa-user "></i>
-                    <span>Profile</span>
-                </a>
             </li>
 
             <!-- Divider -->
@@ -68,40 +61,43 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fas fa-fw fa-solid fa-hospital-user"></i>
                     <span>Pasien</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Daftar:</h6>
-                        <a class="collapse-item" href="<?= base_url('dashboard/People/tb_ibu') ?>">Ibu</a>
-                        <a class="collapse-item" href="<?= base_url('dashboard/People/tb_anak') ?>">Anak</a>
+                        <a class="collapse-item" href="<?= base_url('dashboard/people/tb_ibu') ?>">Ibu</a>
+                        <a class="collapse-item" href="<?= base_url('dashboard/people/tb_anak') ?>">Anak</a>
                     </div>
                 </div>
             </li>
 
             <hr class="sidebar-divider">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Riwayat
+            </div>
 
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href=<?php echo base_url("dashboard/Riwayat/riwayat") ?>>
-                    <i class="fas fa-fw "></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-solid fa-book-medical"></i>
                     <span>Riwayat</span>
                 </a>
-                <a class="nav-link" href=<?php echo base_url("dashboard/Riwayat/vaksin") ?>>
-                    <i class="fas fa-fw "></i>
-                    <span>Vaksinasi</span>
-                </a>
-                <a class="nav-link" href=<?php echo base_url("dashboard/Riwayat/h_pemeriksaan") ?>>
-                    <i class="fas fa-fw "></i>
-                    <span>Hasil Pemeriksaan</span>
-                </a>
-                <a class="nav-link" href=<?php echo base_url("dashboard/Riwayat/pemeriksaan") ?>>
-                    <i class="fas fa-fw "></i>
-                    <span>Pemeriksaan</span>
-                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Daftar:</h6>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/daftar_periksa") ?>">Daftar Periksa</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/pemeriksaan") ?>">Pemeriksaan</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/pertumbuhan") ?>">Pertumbuhan</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/vaksin") ?>">Vaksin</a>
+                    </div>
+                </div>
             </li>
 
-
+            <hr class="sidebar-divider">
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

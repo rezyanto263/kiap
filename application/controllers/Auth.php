@@ -1,9 +1,8 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
-{
-
+class Auth extends CI_Controller {
 
     public function __construct()
     {
@@ -158,8 +157,6 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required', [
             'required' => 'Password harus diisi!'
         ]);
-
-
 
         if ($this->form_validation->run() == false) {
 

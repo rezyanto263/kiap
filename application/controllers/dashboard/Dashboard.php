@@ -1,9 +1,8 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
-{
-
+class Dashboard extends CI_Controller {
 
     public function __construct()
     {
@@ -33,12 +32,6 @@ class Dashboard extends CI_Controller
         $this->load->view('partials/dash_footer.php');
     }
 
-
-    public function logout()
-    {
-        $this->session->sess_destroy();
-        redirect('auth');
-    }
 }
 
 /* End of file Dashboard.php */

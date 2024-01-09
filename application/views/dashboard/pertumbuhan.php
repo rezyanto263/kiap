@@ -34,7 +34,7 @@
                 <tbody>
                     <?php
                     $id = 1;
-                    foreach ($riwayat as $key) :
+                    foreach ($pertumbuhan as $key) :
                     ?>
                         <tr>
                             <td><?= $key['id'] ?></td>
