@@ -24,7 +24,7 @@
                         <th>No. Anak</th>
                         <th>Tanggal Vaksinasi</th>
                         <th>Usia Vaksinasi</th>
-                        <th>info</th>
+                        <th>Info</th>
                     </tr>
                 </thead>
                 <tfoot>
