@@ -8,7 +8,6 @@ class Riwayat extends CI_Controller {
         parent::__construct();
         //Do your magic here
         $this->load->model('dashboard/M_riwayat');
-        $this->load->model('dashboard/M_hasil');
     }
 
 
@@ -38,7 +37,7 @@ class Riwayat extends CI_Controller {
     public function pemeriksaan()
     {
         $data['pemeriksaan'] = $this->M_riwayat->r_pemeriksaan();
-        $data['periksa'] = $this->M_hasil->alldata();
+        $data['periksa'] = $this->M_riwayat->alldata('riwayat_pemeriksaan');
         $title['title'] = 'Riwayat Pemeriksaan Pasien';
         $this->load->view('partials/dash_header.php', $title);
         $this->load->view('partials/dash_sidebar.php');

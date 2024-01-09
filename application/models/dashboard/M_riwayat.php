@@ -19,7 +19,6 @@ class M_riwayat extends CI_Model
         $this->db->from('pemeriksaan a');
         $this->db->join('dokter b', 'b.nip = a.nip_dokter', 'left');
         $this->db->join('ruangan c', 'c.nama_ruangan = a.id_ruangan', 'left');
-
         return $this->db->get()->result_array();
     }
 
@@ -29,6 +28,11 @@ class M_riwayat extends CI_Model
         $this->db->from('riwayat_pertumbuhan a');
         $this->db->join('anak b', 'b.nik_anak = a.nik_anak', 'left');
         return $this->db->get()->result_array();
+    }
+
+    public function allData($tabel)
+    {
+        return $this->db->get($tabel);
     }
 }
 
