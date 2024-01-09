@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" href="<?= base_url('assets/'); ?>img/logo.png">
     <title>
         <?php echo $title; ?>
     </title>
@@ -29,6 +29,7 @@
         }
         
         .button {
+            height: 37.3px;
             color: #FFFFFF;
             font-weight: 700;
             padding: 10px 50px;
@@ -84,7 +85,3 @@
     <section class="gradient-custom d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="container my-5 position-relative">
             <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card text-black shadow-lg" style="border-radius: 1rem; background-color: #FFFFFF ;">
-                        <div class="card-body p-5 text-center ">
-                            <img  class="m-auto p-0 rounded-circle" src="<?= base_url('assets/img/logo.png'); ?>" style="width: 80px; height: 80px; box-shadow: 0px 0px 12px 0px rgba(247, 88, 170, 0.6)" alt="">

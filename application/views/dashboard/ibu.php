@@ -26,7 +26,9 @@
                             <th class="align-middle">Gol. Darah</th>
                             <th class="align-middle">No. Handphone</th>
                             <th class="align-middle">Tanggal Lahir</th>
+                            <th class="align-middle">Pekerjaan</th>
                             <th class="align-middle text-center">Alamat</th>
+                            <th class="align-middle">Nama Suami</th>
                             <th class="align-middle">Waktu Edit</th>
                             <td class="align-middle">Opsi</td>
                         </tr>
@@ -46,7 +48,9 @@
                                 <td><?= $key['gol_darah']; ?></td>
                                 <td><?= $key['no_telp']; ?></td>
                                 <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
+                                <td><?= $key['pekerjaan']; ?></td>
                                 <td><?= $key['alamat']; ?></td>
+                                <td><?= $key['nama_suami']; ?></td>
                                 <td><?= date('d-m-Y H:i:s', strtotime($key['date_created'])); ?></td>
                                 <td>
                                     <center>
@@ -96,8 +100,8 @@
 
                             <div class="form-group">
                                 <label for="agama">Agama</label>
-                                <select class="form-select" name="agama" id="agama">
-                                    <option selected disabled style="display: none;">Pilih Agama</option>
+                                <select class="form-select" name="agama" id="agama" required>
+                                    <option selected disabled style="display: none;">-- Agama --</option>
                                     <option value="Islam" <?= ($ibu['agama']=='Islam')?'selected':''; ?>>Islam</option>
                                     <option value="Hindu" <?= ($ibu['agama']=='Hindu')?'selected':''; ?>>Hindu</option>
                                     <option value="Buddha" <?= ($ibu['agama']=='Buddha')?'selected':''; ?>>Buddha</option>
@@ -109,12 +113,13 @@
 
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $ibu['nama_ibu'] ?>">
+                                <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $ibu['nama_ibu'] ?>" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="gol_darah">Gol. Darah</label>
-                                <select class="form-select" name="gol_darah" id="gol_darah">
+                                <select class="form-select" name="gol_darah" id="gol_darah" required>
+                                    <option selected hidden disabled>-- Golongan Darah --</option>
                                     <option value="A" <?= ($ibu['gol_darah']=='A')?'selected':''; ?>>A</option>
                                     <option value="AB" <?= ($ibu['gol_darah']=='AB')?'selected':''; ?>>AB</option>
                                     <option value="B" <?= ($ibu['gol_darah']=='B')?'selected':''; ?>>B</option>
@@ -133,17 +138,32 @@
                             </script>
                             <div class="form-group">
                                 <label for="no_telp">No. Handphone</label>
-                                <input type="number" name="no_telp" onkeypress="return isNumberKey(event)" placeholder="Masukkan No. Handphone" class="form-control" value="<?= $ibu['no_telp'] ?>">
+                                <input type="number" name="no_telp" onkeypress="return isNumberKey(event)" placeholder="Masukkan No. Handphone" class="form-control" value="<?= $ibu['no_telp'] ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pekerjaan">Pekerjaan</label>
+                                <input type="text" name="pekerjaan" placeholder="Masukkan Pekerjaan" class="form-control" value="<?= $ibu['pekerjaan'] ?>" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="tgl_lahir">Tanggal Lahir</label>
-                                <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $ibu['tgl_lahir'] ?>">
+                                <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $ibu['tgl_lahir'] ?>" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control" value="<?= $ibu['alamat'] ?>">
+                                <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control" value="<?= $ibu['alamat'] ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nama_suami">Nama Suami</label>
+                                <input type="text" name="nama_suami" placeholder="Masukkan Nama Suami" class="form-control" value="<?= $ibu['nama_suami'] ?>">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" name="password" placeholder="Masukkan Password" class="form-control" value="<?= $ibu['password'] ?>" required>
                             </div>
 
                             <div class="modal-footer">
@@ -215,8 +235,8 @@
         
                             <div class="form-group">
                                 <label for="agama">Agama</label>
-                                <select class="form-select" name="agama" id="agama">
-                                    <option selected disabled style="display: none;">Pilih Agama</option>
+                                <select class="form-select" name="agama" id="agama" required>
+                                    <option selected disabled style="display: none;">-- Agama --</option>
                                     <option value="Islam">Islam</option>
                                     <option value="Hindu">Hindu</option>
                                     <option value="Buddha">Buddha</option>
@@ -233,8 +253,8 @@
         
                             <div class="form-group">
                                 <label for="gol_darah">Gol. Darah</label>
-                                <select class="form-select" name="gol_darah" id="gol_darah">
-                                    <option selected disabled style="display: none;">Pilih Gol. Darah</option>
+                                <select class="form-select" name="gol_darah" id="gol_darah" required>
+                                    <option selected disabled style="display: none;">-- Golongan Darah --</option>
                                     <option value="A">A</option>
                                     <option value="AB">AB</option>
                                     <option value="B">B</option>
@@ -242,15 +262,20 @@
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label for="no_telp">No. Handphone</label>
+                                <input type="text" name="no_telp" onkeypress="return isNumberKey(event)" placeholder="Masukkan No. Handphone" class="form-control" required>
+                            </div>
+
                         </div>
 
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="no_telp">No. Handphone</label>
-                                <input type="text" name="no_telp" onkeypress="return isNumberKey(event)" placeholder="Masukkan No. Handphone" class="form-control" required>
+                                <label for="pekerjaan">Pekerjaan</label>
+                                <input type="text" name="pekerjaan" placeholder="Masukkan Pekerjaan" class="form-control" required>
                             </div>
-        
+
                             <div class="form-group">
                                 <label for="tgl_lahir">Tanggal Lahir</label>
                                 <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" required>
@@ -259,6 +284,11 @@
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
                                 <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nama_suami">Nama Suami</label>
+                                <input type="text" name="nama_suami" placeholder="Masukkan Nama Suami" class="form-control">
                             </div>
         
                             <div class="form-group">

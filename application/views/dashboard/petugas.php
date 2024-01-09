@@ -7,12 +7,13 @@
     </div>
 
     <div class="card shadow mb-4">
+
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             <button type="button" class="btn btn-primary btn-sm float-right" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah Data</button>
-
         </div>
         <!-- /.card-header -->
+
         <div class="card-body">
             <?= $this->session->flashdata('pesan'); ?>
             <table id="example1" class="table table-bordered table-striped">
@@ -27,8 +28,6 @@
                         <th>info</th>
                     </tr>
                 </thead>
-                <tfoot>
-                </tfoot>
                 <tbody>
                     <?php
                     $id = 1;
@@ -52,7 +51,8 @@
                                 <center>
                                     <!-- btn info -->
                                     <button class="btn btn-sm btn-info btn-circle" data-bs-toggle="modal" data-bs-target="#editModal<?= $key['id_petugas']; ?>">
-                                        <i class="fas fa-info"></i></button>
+                                        <i class="fas fa-info"></i>
+                                    </button>
                                     <!-- btn delete -->
                                     <button class="btn btn-sm btn-danger btn-circle" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $key['id_petugas'] ?>">
                                         <i class="fas fa-trash"></i>
@@ -61,6 +61,7 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
+                </tbody>
             </table>
         </div>
         <!-- /.card-body -->
@@ -90,35 +91,35 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="username">Username</label>
-                                        <input type="text" name="username" placeholder="Masukkan Username" class="form-control" value="<?= $row['username'] ?>">
+                                        <input type="text" name="username" placeholder="Masukkan Username" class="form-control" value="<?= $row['username'] ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $row['nama_petugas'] ?>">
+                                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $row['nama_petugas'] ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>
-                                        <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control" value="<?= $row['alamat'] ?>">
+                                        <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control" value="<?= $row['alamat'] ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="no_telp">No. Telp</label>
-                                        <input type="text" name="no_telp" placeholder="Masukkan No. Telp" class="form-control" value="<?= $row['no_telp'] ?>">
+                                        <input type="text" name="no_telp" placeholder="Masukkan No. Telp" class="form-control" value="<?= $row['no_telp'] ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="text" name="password" placeholder="Masukkan password" class="form-control" value="<?= $row['password'] ?>">
+                                        <input type="text" name="password" placeholder="Masukkan password" class="form-control" value="<?= $row['password'] ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis</label>
-                                        <select name="jenis_kelamin" id="" class="form-control">
-                                            <option class="form-control" value="">-- Jenis Kelamin --</option>
+                                        <select name="jenis_kelamin" id="" class="form-control" required>
+                                            <option class="form-control" value="" selected hidden disabled>-- Jenis Kelamin --</option>
                                             <option value="L" <?= $row['jenis_kelamin'] == 'L' ? 'selected' : '' ?>>Laki-Laki</option>
                                             <option value="P" <?= $row['jenis_kelamin'] == 'P' ? 'selected' : '' ?>>Perempuan</option>
                                         </select>
@@ -152,11 +153,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        </button>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id" value="<?= $ibu['id_petugas'] ?>">
+                        <input type="hidden" name="id" value="<?= $row['id_petugas'] ?>">
                         Anda yakin ingin menghapus data ini?
                         Tindakan ini tidak dapat dibatalkan, pastikan Anda telah mempertimbangkan dengan cermat sebelum melanjutkan.
                     </div>
@@ -167,71 +167,79 @@
                 </div>
             </div>
         </div>
-</div>
-<?php endforeach; ?>
+
+    <?php endforeach; ?>
 <!-- end Modal Hapus -->
 
 <!-- modal tambah -->
 
-<div class="modal fade bd-example-modal-lg" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Petugas</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+    <div class="modal fade bd-example-modal-lg" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Petugas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-            <!-- modal content-->
-            <div class="modal-body">
-                <?= form_open_multipart('dashboard/people/proses_tambah_petugas'); ?>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" name="username" placeholder="Masukkan Username" class="form-control">
+                <!-- modal content-->
+                <div class="modal-body">
+                    <?= form_open_multipart('dashboard/people/proses_tambah_petugas'); ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" placeholder="Masukkan Username" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control" required>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="nama">Nama</label>
-                            <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="no_telp">No.telp</label>
+                                <input type="text" name="no_telp" placeholder="Masukkan No.Telp" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" name="password" placeholder="Masukkan password" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="jenis_kelamin">Jenis Kelamin</label>
+                                <select name="jenis_kelamin" id="" class="form-control" required>
+                                    <option class="form-control" value="" hidden selected disabled>-- Jenis Kelamin --</option>
+                                    <option value="L">Laki-Laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input type="text" name="alamat" placeholder="Masukkan Alamat" class="form-control">
-                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="no_telp">No.telp</label>
-                            <input type="text" name="no_telp" placeholder="Masukkan No.Telp" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" name="password" placeholder="Masukkan password" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <select name="jenis_kelamin" id="" class="form-control">
-                                <option class="form-control" value="">--jenis_kelamin--</option>
-                                <option value="L">Laki-Laki</option>
-                                <option value="P">Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
+                    <?= form_close(); ?>
+                    
                 </div>
-                <?= form_close(); ?>
-
+                
             </div>
             <!-- end modal content-->
-
         </div>
     </div>
+</div>
+
+
+
+
+
+
 

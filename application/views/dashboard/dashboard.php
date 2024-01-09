@@ -5,26 +5,8 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
-
+    
     <div class="row">
-
-        <!-- Card Ibu -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href=<?php echo base_url("dashboard/People/tb_ibu") ?> class="card border-left-primary shadow h-100 py-2 text-decoration-none">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Daftar Ibu</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_ibu; ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
 
         <!-- Card Petugas -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -44,24 +26,7 @@
             </a>
         </div>
 
-        <!-- Card Petugas -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?php echo base_url("dashboard/People/tb_anak") ?>" class="card border-left-warning shadow h-100 py-2 text-decoration-none">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Daftar Anak</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_anak; ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
+        <!-- Card Dokter -->
         <div class="col-xl-3 col-md-6 mb-4">
             <a href="<?php echo base_url("dashboard/People/tb_dokter") ?>" class="card border-left-success shadow h-100 py-2 text-decoration-none">
                 <div class="card-body">
@@ -79,7 +44,44 @@
             </a>
         </div>
 
-        <!-- Card Petugas -->
+        <!-- Card Ibu -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href=<?php echo base_url("dashboard/People/tb_ibu") ?> class="card border-left-primary shadow h-100 py-2 text-decoration-none">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Daftar Ibu</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_ibu; ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card Anak -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="<?php echo base_url("dashboard/People/tb_anak") ?>" class="card border-left-warning shadow h-100 py-2 text-decoration-none">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Daftar Anak</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_anak; ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <!-- Card Vaksin -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">

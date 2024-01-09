@@ -67,8 +67,10 @@ class M_people extends CI_Model
             "nama_ibu" => $this->input->post('nama'),
             "gol_darah" => $this->input->post('gol_darah'),
             "no_telp" => $this->input->post('no_telp'),
+            "pekerjaan" => $this->input->post('pekerjaan'),
             "tgl_lahir" => $this->input->post('tgl_lahir'),
             "alamat" => $this->input->post('alamat'),
+            "nama_suami" => $this->input->post('nama_suami'),
             'password' => password_hash(
                 $this->input->post('password'),
                 PASSWORD_DEFAULT
@@ -100,13 +102,13 @@ class M_people extends CI_Model
         $ibu = [
             'nik_ibu' => htmlspecialchars($this->input->post('nik')),
             'nama_ibu' => htmlspecialchars($this->input->post('nama')),
-            "nik_ibu" => $this->input->post('nik'),
             "agama" => $this->input->post('agama'),
-            "nama_ibu" => $this->input->post('nama'),
             "gol_darah" => $this->input->post('gol_darah'),
             "no_telp" => htmlspecialchars($this->input->post('no_telp')),
             "tgl_lahir" => htmlspecialchars($this->input->post('tgl_lahir')),
+            "pekerjaan" => htmlspecialchars($this->input->post('pekerjaan')),
             "alamat" => htmlspecialchars($this->input->post('alamat')),
+            "nama_suami" => htmlspecialchars($this->input->post('nama_suami')),
             'password' => $password,
             'date_created' => date('Y-m-d H:i:s')
         ];

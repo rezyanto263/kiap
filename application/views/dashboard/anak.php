@@ -100,12 +100,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>">
+                                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tgl_lahir">Tanggal Lahir</label>
-                                        <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>">
+                                        <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>" required>
                                     </div>
 
                                     <div class="form-group">
@@ -122,8 +122,8 @@
 
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis</label>
-                                        <select name="jenis_kelamin" id="" class="form-control">
-                                            <option class="form-control" value="">-- jenis kelamin --</option>
+                                        <select name="jenis_kelamin" id="" class="form-control" required>
+                                            <option selected hidden disabled class="form-control" value="">-- Jenis Kelamin --</option>
                                             <option value="L" <?= $anak['jenis_kelamin'] == "L" ? "selected" : null ?>>Laki-Laki</option>
                                             <option value="P" <?= $anak['jenis_kelamin'] == 'P' ? 'selected' : null ?>>Perempuan</option>
                                         </select>
@@ -131,7 +131,7 @@
 
                                     <div class="form-group">
                                         <label for="lingkar_kepala">Lingkar Kepala</label>
-                                        <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lingkar_kepala'] ?>">
+                                        <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lingkar_kepala'] ?>" required>
                                     </div>
                                 </div>
 
@@ -218,30 +218,29 @@
 
                             <div class="form-group">
                                 <label for="tb_lahir">Tinggi Badan</label>
-                                <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" required>
+                                <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" >
                             </div>
 
                             <div class="form-group">
                                 <label for="bb_lahir">Berat Badan</label>
-                                <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" required>
+                                <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" >
                             </div>
                             
                             <div class="form-group">
                                 <label for="lingkar_kepala">Lingkar Kepala</label>
-                                <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" required>
+                                <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" >
                             </div>
 
                             <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" id="" class="form-control" required>
-                                    <option class="form-control" value="">-- jenis_kelamin --</option>
+                                    <option class="form-control" selected disabled hidden>-- Jenis Kelamin --</option>
                                     <option value="L">Laki-Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
                             </div>
 
                         </div>
-
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Simpan</button>

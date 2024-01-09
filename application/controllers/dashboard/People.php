@@ -22,7 +22,7 @@ class People extends CI_Controller {
         $this->load->view('partials/dash_header.php', $title);
         $this->load->view('partials/dash_sidebar.php');
         $this->load->view('partials/dash_topbar.php');
-        $this->load->view('dashboard/dash_ibu', $data, $title);
+        $this->load->view('dashboard/ibu', $data, $title);
         $this->load->view('partials/dash_footer.php');
     }
 
@@ -33,7 +33,7 @@ class People extends CI_Controller {
         $this->load->view('partials/dash_header.php', $title);
         $this->load->view('partials/dash_sidebar.php');
         $this->load->view('partials/dash_topbar.php');
-        $this->load->view('dashboard/dash_kader', $data, $title);
+        $this->load->view('dashboard/petugas', $data, $title);
         $this->load->view('partials/dash_footer.php');
     }
 

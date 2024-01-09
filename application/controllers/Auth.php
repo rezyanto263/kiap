@@ -8,7 +8,7 @@ class Auth extends CI_Controller {
     {
         parent::__construct();
         //Do your magic here
-        $this->load->model('M_sess');
+        $this->load->model('M_auth');
         $this->load->library('form_validation');
     }
 
@@ -54,7 +54,7 @@ class Auth extends CI_Controller {
         $password = $this->input->post('password');
 
 
-        $cekIbu = $this->M_sess->cekUser('ibu', 'nik_ibu', $username);
+        $cekIbu = $this->M_auth->cekUser('ibu', 'nik_ibu', $username);
 
         if ($cekIbu) {
             foreach ($cekIbu as $ibu) {
@@ -83,7 +83,7 @@ class Auth extends CI_Controller {
         } 
         
         
-        $cekPetugas = $this->M_sess->cekUser('petugas', 'username', $username);
+        $cekPetugas = $this->M_auth->cekUser('petugas', 'username', $username);
         if ($cekPetugas) {
             foreach ($cekPetugas as $row) {
                 if (password_verify($password, $row->password)) {
@@ -142,6 +142,10 @@ class Auth extends CI_Controller {
             'required' => 'Golongan Darah harus diisi!'
         ]);
 
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'trim|required', [
+            'required' => 'Pekerjaan harus diisi!'
+        ]);
+
         $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required', [
             'required' => 'Alamat harus diisi!'
         ]);
@@ -168,7 +172,7 @@ class Auth extends CI_Controller {
             $this->load->view('partials/auth_footer');
         } else {
             //jika register berhasil
-            $this->M_sess->register_ibu();
+            $this->M_auth->register_ibu();
             $this->session->set_flashdata(
                 'register-succes',
                 '<div class="alert alert-success" role="alert">
@@ -216,7 +220,7 @@ class Auth extends CI_Controller {
     //         $this->load->view('Auth/register_anak');
     //         $this->load->view('partials/auth_footer');
     //     } else {
-    //         $this->M_sess->register_anak();
+    //         $this->M_auth->register_anak();
     //         $this->session->set_flashdata(
     //             'message',
     //             '<div class="alert alert-success" role="alert">
