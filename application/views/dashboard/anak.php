@@ -50,15 +50,11 @@
                                         echo '--';
                                     };
                                     ?></td>
-<<<<<<< HEAD
-                                <td><?= $key['lk_lahir']; ?></td>
-=======
                                 <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
                                 <td><?= $key['tb_lahir']; ?> cm</td>
                                 <td><?= $key['bb_lahir']; ?> kg</td>
                                 <td><?= $key['lk_lahir']; ?> cm</td>
                                 <td><?= $key['date_created']; ?></td>
->>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
                                 <td>
                                     <center>
                                         <!-- btn info -->
@@ -98,18 +94,6 @@ foreach ($data_anak as $anak) : $id++;
                         <div class="row">
                             <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
 
-<<<<<<< HEAD
-                            <div class="form-group">
-                                <label for="nik_ibu">NIK Ibu</label>
-                                <input type="text" name="nik_ibu" placeholder="Masukkan NIK Ibu" class="form-control" value="<?= $anak['nik_ibu'] ?>" required>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
-                                </div>
-=======
         <!-- Modal edit-->
         <div class="modal fade" id="editModal<?= $anak['nik_anak']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -123,18 +107,12 @@ foreach ($data_anak as $anak) : $id++;
                             <div class="row">
 
                                 <input type="text" name="nik_anak" placeholder="Masukkan NIK Anak" class="form-control" value="<?= $anak['nik_anak']?>" hidden required>
->>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
 
                                 <div class="form-group">
                                     <label for="tgl_lahir">Tanggal Lahir</label>
                                     <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>" required>
                                 </div>
 
-<<<<<<< HEAD
-                                <div class="form-group">
-                                    <label for="tb_lahir">Tinggi Badan</label>
-                                    <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>">
-=======
                                 <div class="col-md-6">
 
                                     <div class="form-group">
@@ -188,7 +166,6 @@ foreach ($data_anak as $anak) : $id++;
 
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
->>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
                                 </div>
                             </div>
 
@@ -226,8 +203,6 @@ foreach ($data_anak as $anak) : $id++;
 
     <!-- end Modal edit-->
 
-<<<<<<< HEAD
-=======
     <!-- Modal Hapus  -->
     <?php
     $id = 1;
@@ -256,7 +231,6 @@ foreach ($data_anak as $anak) : $id++;
     <?php endforeach; ?>
     <!-- end Modal Hapus -->
 
->>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
     <!-- Modal Tambah data -->
     <div class="modal fade bd-example-modal-lg" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -307,13 +281,8 @@ foreach ($data_anak as $anak) : $id++;
                             </div>
 
                             <div class="form-group">
-<<<<<<< HEAD
-                                <label for="lingkar_kepala">Lingkar Kepala</label>
-                                <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control">
-=======
                                 <label for="lk_lahir">Lingkar Kepala</label>
                                 <input type="text" name="lk_lahir" placeholder="Lingkar Kepala" class="form-control" >
->>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
                             </div>
 
                             <div class="form-group">
