@@ -74,7 +74,7 @@
             </li>
 
             <hr class="sidebar-divider">
-            
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Riwayat
@@ -92,6 +92,7 @@
                         <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/daftar_periksa") ?>">Daftar Periksa</a>
                         <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/pemeriksaan") ?>">Pemeriksaan</a>
                         <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/pertumbuhan") ?>">Pertumbuhan</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/r_vaksin") ?>">Riwayat Vaksin</a>
                         <a class="collapse-item" href="<?php echo base_url("dashboard/riwayat/vaksin") ?>">Vaksin</a>
                     </div>
                 </div>
@@ -99,8 +100,28 @@
 
             <hr class="sidebar-divider">
 
+            <div class="sidebar-heading">
+                Panduan
+            </div>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link colapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas da-fw-solid"></i>
+                    <span>Panduan</span>
+                </a>
+                <div class="collapse" id="collapseFive" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Daftar:</h6>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/ibu") ?>">Ibu</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/balita") ?>">Balita</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/anak") ?>">Anak</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/remaja") ?>">Remaja</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class=" sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

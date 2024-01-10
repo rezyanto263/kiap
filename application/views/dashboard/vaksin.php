@@ -18,12 +18,10 @@
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>No.</th>
+                        <th>Id Vaksin</th>
                         <th>Nama Vaksin</th>
-                        <th>No. Periksa</th>
-                        <th>No. Anak</th>
-                        <th>Tanggal Vaksinasi</th>
-                        <th>Usia Vaksinasi</th>
+                        <th>Jenis</th>
+                        <th>Deskripsi</th>
                         <th>Info</th>
                     </tr>
                 </thead>
@@ -36,11 +34,9 @@
                     ?>
                         <tr>
                             <td><?= $key['id_vaksin'] ?></td>
-                            <td><?= $key['nama_vaksin'] ?></td>
-                            <td><?= $key['id_periksa'] ?></td>
-                            <td><?= $key['nik_anak'] ?></td>
-                            <td><?= date('d - m - Y', strtotime($key['tgl_vaksin'])) ?></td>
-                            <td><?= $key['usia_vaksin'] ?></td>
+                            <td><?= $key['nama'] ?></td>
+                            <td><?= $key['jenis'] ?></td>
+                            <td><?= $key['deskripsi'] ?></td>
                             <td>
                                 <center>
                                     <!-- btn info -->

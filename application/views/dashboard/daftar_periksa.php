@@ -100,7 +100,7 @@
 
                     <div class="form-group">
                         <label for="catatan">Dokter</label>
-                        <select name="nip_dokter" id="nip">
+                        <select class="form-select" name="nip_dokter" id="nip">
                             <?php foreach ($dataDokter as $key ) {
                                 echo '<option value="'.$key['nip'].'">'.$key['nama_dokter'].'</option>';
                             }  ?>
