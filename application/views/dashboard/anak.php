@@ -52,7 +52,7 @@
                                         echo '--';
                                     };
                                     ?></td>
-                                <td><?= $key['lingkar_kepala']; ?></td>
+                                <td><?= $key['lk_lahir']; ?></td>
                                 <td>
                                     <center>
                                         <!-- btn info -->
@@ -72,75 +72,74 @@
             </div>
         </div>
     </div>
+</div>
 
+<?php
+$id = 1;
+foreach ($data_anak as $anak) : $id++;
+?>
 
-    <?php
-    $id = 1;
-    foreach ($data_anak as $anak) : $id++;
-    ?>
+    <!-- Modal edit-->
+    <div class="modal fade" id="editModal<?= $anak['nik_anak']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('dashboard/people/edit_anak') ?>" method="post">
+                        <div class="row">
+                            <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
 
-        <!-- Modal edit-->
-        <div class="modal fade" id="editModal<?= $anak['nik_anak']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?= base_url('dashboard/people/edit_anak') ?>" method="post">
-                            <div class="row">
-                                <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
+                            <div class="form-group">
+                                <label for="nik_ibu">NIK Ibu</label>
+                                <input type="text" name="nik_ibu" placeholder="Masukkan NIK Ibu" class="form-control" value="<?= $anak['nik_ibu'] ?>" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
+                                </div>
 
                                 <div class="form-group">
-                                    <label for="nik_ibu">NIK Ibu</label>
-                                    <input type="text" name="nik_ibu" placeholder="Masukkan NIK Ibu" class="form-control" value="<?= $anak['nik_ibu']?>" required>
+                                    <label for="tgl_lahir">Tanggal Lahir</label>
+                                    <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>" required>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="tgl_lahir">Tanggal Lahir</label>
-                                        <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="tb_lahir">Tinggi Badan</label>
-                                        <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="bb_lahir">Berat Badan</label>
-                                        <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" value="<?= $anak['bb_lahir'] ?>">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="jenis_kelamin">Jenis</label>
-                                        <select name="jenis_kelamin" id="" class="form-control" required>
-                                            <option selected hidden disabled class="form-control" value="">-- Jenis Kelamin --</option>
-                                            <option value="L" <?= $anak['jenis_kelamin'] == "L" ? "selected" : null ?>>Laki-Laki</option>
-                                            <option value="P" <?= $anak['jenis_kelamin'] == 'P' ? 'selected' : null ?>>Perempuan</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="lingkar_kepala">Lingkar Kepala</label>
-                                        <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lingkar_kepala'] ?>" required>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                <div class="form-group">
+                                    <label for="tb_lahir">Tinggi Badan</label>
+                                    <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>">
                                 </div>
                             </div>
-                        </form>
-                    </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bb_lahir">Berat Badan</label>
+                                    <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" value="<?= $anak['bb_lahir'] ?>">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jenis_kelamin">Jenis</label>
+                                    <select name="jenis_kelamin" id="" class="form-select" required>
+                                        <option selected hidden disabled class="form-control" value="">-- Jenis Kelamin --</option>
+                                        <option value="L" <?= $anak['jenis_kelamin'] == "L" ? "selected" : null ?>>Laki-Laki</option>
+                                        <option value="P" <?= $anak['jenis_kelamin'] == 'P' ? 'selected' : null ?>>Perempuan</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lingkar_kepala">Lingkar Kepala</label>
+                                    <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lingkar_kepala'] ?>" required>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -148,34 +147,6 @@
     <?php endforeach; ?>
 
     <!-- end Modal edit-->
-
-    <!-- Modal Hapus  -->
-    <?php
-    $id = 1;
-    foreach ($data_anak as $anak) : $id++;
-    ?>
-        <div class="modal fade" id="hapusModal<?= $anak['nik_anak']; ?>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
-                        Anda yakin ingin menghapus data ini?
-                        Tindakan ini tidak dapat dibatalkan, pastikan Anda telah mempertimbangkan dengan cermat sebelum melanjutkan.
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                        <a class="btn btn-danger" href="<?= base_url() ?>dashboard/people/hapus_anak/<?= $anak['nik_anak'] ?>">Hapus</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <!-- end Modal Hapus -->
 
     <!-- Modal Tambah data -->
     <div class="modal fade bd-example-modal-lg" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -213,22 +184,22 @@
                             </div>
 
                         </div>
-                        
+
                         <div class="col-md-6">
 
                             <div class="form-group">
                                 <label for="tb_lahir">Tinggi Badan</label>
-                                <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" >
+                                <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="bb_lahir">Berat Badan</label>
-                                <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" >
+                                <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="lingkar_kepala">Lingkar Kepala</label>
-                                <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control" >
+                                <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -254,6 +225,30 @@
         </div>
     </div>
 
-
-
-</div>
+    <!-- Modal Hapus  -->
+    <?php
+    $id = 1;
+    foreach ($data_anak as $anak) : $id++;
+    ?>
+        <div class="modal fade" id="hapusModal<?= $anak['nik_anak']; ?>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
+                        Anda yakin ingin menghapus data ini?
+                        Tindakan ini tidak dapat dibatalkan, pastikan Anda telah mempertimbangkan dengan cermat sebelum melanjutkan.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <a class="btn btn-danger" href="<?= base_url() ?>dashboard/people/hapus_anak/<?= $anak['nik_anak'] ?>">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <!-- end Modal Hapus -->
