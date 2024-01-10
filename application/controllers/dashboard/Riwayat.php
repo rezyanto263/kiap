@@ -10,10 +10,9 @@ class Riwayat extends CI_Controller {
         $this->load->model('dashboard/M_riwayat');
     }
 
-
+    // View
     public function pertumbuhan()
     {
-
         $result['pertumbuhan'] = $this->M_riwayat->r_pertumbuhan();
         $data['title'] = 'Riwayat Pertumbuhan Pasien';
         $this->load->view('partials/dash_header.php', $data);
@@ -48,9 +47,13 @@ class Riwayat extends CI_Controller {
 
     public function daftar_periksa()
     {
-
-        $result['periksa'] = $this->M_riwayat->r_daftar_periksa();
-        $title['title'] = 'Hasil Pemeriksaan Pasien';
+        $result = [
+            'dataPeriksa' => $this->M_riwayat->r_daftar_periksa(),
+            'dataDokter' => $this->M_riwayat->allData('dokter'),
+            'dataRuangan' => $this->M_riwayat->allData('ruangan'),
+            'dataIbu' => $this->M_riwayat->allData('ibu')
+        ];
+        $title['title'] = 'Riwayat Daftar Periksa Pasien';
         $this->load->view('partials/dash_header.php', $title);
         $this->load->view('partials/dash_sidebar.php');
         $this->load->view('partials/dash_topbar.php');
@@ -58,15 +61,22 @@ class Riwayat extends CI_Controller {
         $this->load->view('partials/dash_footer.php');
     }
 
-    public function tambah_hasil()
-    {
-        $insert = [
-            "id_periksa" => $this->input->post('id_periksa'),
-            "keterangan" => $this->input->post('keterangan'),
-            "resep" => $this->input->post('keterangan')
-        ];
-        $this->db->insert('riwayat_pemeriksaan', $insert);
-        redirect('pemeriksaan');
+    // Proses
+    public function tambah_daftar_periksa() {
+        $data = array(
+            'tanggal_periksa' => date('Y-m-d'),
+            'kategori' => $this->input->post('kategori'),
+            'nik_ibu' => $this->input->post('nik_ibu'),
+            'nama_ibu' => $this->input->post('nama_ibu'),
+            'nama_petugas' => $this->input->post('nama_petugas'),
+            'nama_dokter' => $this->input->post('nama_dokter'),
+            'nama_ruangan' => $this->input->post('nama_ruangan')
+        );
+
+        $tabel = $this->M_riwayat->r_data_periksa();
+        $this->M_riwayat->tambahRiwayat($tabel, $data);
+
+        redirect('daftar_periksa');
     }
 }
 

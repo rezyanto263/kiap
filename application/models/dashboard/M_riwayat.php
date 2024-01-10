@@ -18,8 +18,18 @@ class M_riwayat extends CI_Model
         $this->db->select('*');
         $this->db->from('pemeriksaan a');
         $this->db->join('dokter b', 'b.nip = a.nip_dokter', 'left');
-        $this->db->join('ruangan c', 'c.nama_ruangan = a.id_ruangan', 'left');
+        $this->db->join('ruangan c', 'c.id_ruangan = a.id_ruangan', 'left');
+        $this->db->join('ibu d', 'd.nik_ibu = a.nik_ibu', 'left'); 
+        $this->db->join('petugas e', 'e.id_petugas = a.id_petugas', 'left'); 
         return $this->db->get()->result_array();
+    }
+
+    public function cekSatuRiwayat($tabel, $field, $param) {
+        return $this->db->get_where($tabel, array($field => $param));
+    }
+
+    public function tambahRiwayat($tabel, $arrayData) {
+        $this->db->insert($tabel, $arrayData);
     }
 
     public function r_pertumbuhan()
@@ -32,7 +42,7 @@ class M_riwayat extends CI_Model
 
     public function allData($tabel)
     {
-        return $this->db->get($tabel);
+        return $this->db->get($tabel)->result_array();
     }
 }
 
