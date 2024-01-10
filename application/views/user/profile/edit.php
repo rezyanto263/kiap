@@ -99,10 +99,10 @@
                         <div class="mb-3">
                             <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
                             <select name="pendidikan" id="pendidikan" class="form-select">
-                                <option selected hidden disabled>-- Pendidikan Terakhir --</option>
+                                <option value="-" <?= ($ibu['pendidikan']=='-')?'selected':''?> hidden>-- Pendidikan Terakhir --</option>
                                 <option value="SD"<?= ($ibu['pendidikan']=='SD')?'selected':'' ?>>SD</option>
                                 <option value="SMP"<?= ($ibu['pendidikan']=='SMP')?'selected':'' ?>>SMP</option>
-                                <option value="SMA/SMK"<?= ($ibu['pendidikan']=='SMA')?'selected':'' ?>>SMA/SMK</option>
+                                <option value="SMA/SMK"<?= ($ibu['pendidikan']=='SMA/SMK')?'selected':'' ?>>SMA/SMK</option>
                                 <option value="D3"<?= ($ibu['pendidikan']=='D3')?'selected':'' ?>>D3</option>
                                 <option value="S1"<?= ($ibu['pendidikan']=='S1')?'selected':'' ?>>S1</option>
                                 <option value="S2"<?= ($ibu['pendidikan']=='S2')?'selected':'' ?>>S2</option>

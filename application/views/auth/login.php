@@ -20,7 +20,7 @@
                         <?= form_error('password', '<small class="text-danger pl-5">', '</small>') ?>
                     </div>
 
-                    <button type="submit" class="btn button">Login</button>
+                    <button type="submit" class="btn button d-flex justify-content-center align-items-center w-100">Login</button>
                 </form>
             </div>
 

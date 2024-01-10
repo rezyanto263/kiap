@@ -85,10 +85,8 @@
                     <div class="modal-body">
                         <form action="<?= base_url('dashboard/people/edit_dokter') ?>" method="post">
 
-                            <div class="form-group">
-                                <label for="nip">NIP</label>
-                                <input class="form-control" type="text" value="<?= $row['nip'] ?>" name="nip">
-                            </div>
+                            <input class="form-control" type="text" value="<?= $row['nip'] ?>" name="nip" hidden>
+                            
 
                             <div class="form-group">
                                 <label for="spesialis">Spesialis</label>

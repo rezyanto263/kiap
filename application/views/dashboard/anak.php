@@ -21,11 +21,12 @@
                             <th>NIK Anak</th>
                             <th>NIK Ibu</th>
                             <th>Nama Anak</th>
+                            <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
                             <th>Tinggi Badan</th>
                             <th>Berat Badan</th>
-                            <th>Jenis Kelamin</th>
                             <th>Lingkar Kepala</th>
+                            <th>Waktu Edit</th>
                             <td>Opsi</td>
                         </tr>
                     </thead>
@@ -41,9 +42,6 @@
                                 <td><?= $key['nik_anak']; ?></td>
                                 <td><?= $key['nik_ibu']; ?></td>
                                 <td><?= $key['nama_anak']; ?></td>
-                                <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
-                                <td><?= $key['tb_lahir']; ?> mm</td>
-                                <td><?= $key['bb_lahir']; ?> Kg</td>
                                 <td><?php if ($key['jenis_kelamin'] == 'L') {
                                         echo 'Laki-Laki';
                                     } else if ($key['jenis_kelamin'] == 'P') {
@@ -52,7 +50,15 @@
                                         echo '--';
                                     };
                                     ?></td>
+<<<<<<< HEAD
                                 <td><?= $key['lk_lahir']; ?></td>
+=======
+                                <td><?= date('d - m - Y', strtotime($key['tgl_lahir'])); ?></td>
+                                <td><?= $key['tb_lahir']; ?> cm</td>
+                                <td><?= $key['bb_lahir']; ?> kg</td>
+                                <td><?= $key['lk_lahir']; ?> cm</td>
+                                <td><?= $key['date_created']; ?></td>
+>>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
                                 <td>
                                     <center>
                                         <!-- btn info -->
@@ -92,6 +98,7 @@ foreach ($data_anak as $anak) : $id++;
                         <div class="row">
                             <input type="hidden" name="nik" value="<?= $anak['nik_anak'] ?>">
 
+<<<<<<< HEAD
                             <div class="form-group">
                                 <label for="nik_ibu">NIK Ibu</label>
                                 <input type="text" name="nik_ibu" placeholder="Masukkan NIK Ibu" class="form-control" value="<?= $anak['nik_ibu'] ?>" required>
@@ -102,15 +109,86 @@ foreach ($data_anak as $anak) : $id++;
                                     <label for="nama">Nama</label>
                                     <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
                                 </div>
+=======
+        <!-- Modal edit-->
+        <div class="modal fade" id="editModal<?= $anak['nik_anak']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="<?= base_url('dashboard/people/edit_anak') ?>" method="post">
+                            <div class="row">
+
+                                <input type="text" name="nik_anak" placeholder="Masukkan NIK Anak" class="form-control" value="<?= $anak['nik_anak']?>" hidden required>
+>>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
 
                                 <div class="form-group">
                                     <label for="tgl_lahir">Tanggal Lahir</label>
                                     <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>" required>
                                 </div>
 
+<<<<<<< HEAD
                                 <div class="form-group">
                                     <label for="tb_lahir">Tinggi Badan</label>
                                     <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>">
+=======
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="nama">Nama</label>
+                                        <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" value="<?= $anak['nama_anak'] ?>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tgl_lahir">Tanggal Lahir</label>
+                                        <input type="date" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" class="form-control" value="<?= $anak['tgl_lahir'] ?>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                                        <select name="jenis_kelamin" id="" class="form-control" required>
+                                            <option selected hidden disabled class="form-control" value="">-- Jenis Kelamin --</option>
+                                            <option value="L" <?= $anak['jenis_kelamin'] == "L" ? "selected" : null ?>>Laki-Laki</option>
+                                            <option value="P" <?= $anak['jenis_kelamin'] == 'P' ? 'selected' : null ?>>Perempuan</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    
+                                    <div class="form-group">
+                                        <label for="tb_lahir">Tinggi Badan</label>
+                                        <div class="input-group">
+                                            <input type="text" name="tb_lahir" placeholder="Tinggi Badan" class="form-control" value="<?= $anak['tb_lahir'] ?>" aria-describedby="basic-addon1">
+                                            <span class="input-group-text" id="basic-addon1">cm</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="bb_lahir">Berat Badan</label>
+                                        <div class="input-group">
+                                            <input type="text" name="bb_lahir" placeholder="Berat Badan" class="form-control" value="<?= $anak['bb_lahir'] ?>" aria-describedby="basic-addon2">
+                                            <span class="input-group-text" id="basic-addon2">kg</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="lk_lahir">Lingkar Kepala</label>
+                                        <div class="input-group">
+                                            <input type="text" name="lk_lahir" placeholder="Lingkar Kepala" class="form-control" value="<?= $anak['lk_lahir'] ?>" aria-describedby="basic-addon3">
+                                            <span class="input-group-text" id="basic-addon3">cm</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+>>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
                                 </div>
                             </div>
 
@@ -148,6 +226,37 @@ foreach ($data_anak as $anak) : $id++;
 
     <!-- end Modal edit-->
 
+<<<<<<< HEAD
+=======
+    <!-- Modal Hapus  -->
+    <?php
+    $id = 1;
+    foreach ($data_anak as $anak) : $id++;
+    ?>
+        <div class="modal fade" id="hapusModal<?= $anak['nik_anak']; ?>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="nik_anak" value="<?= $anak['nik_anak'] ?>">
+                        Anda yakin ingin menghapus data ini?
+                        Tindakan ini tidak dapat dibatalkan, pastikan Anda telah mempertimbangkan dengan cermat sebelum melanjutkan.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <a class="btn btn-danger" href="<?= base_url() ?>dashboard/people/hapus_anak/<?= $anak['nik_anak'] ?>">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <!-- end Modal Hapus -->
+
+>>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
     <!-- Modal Tambah data -->
     <div class="modal fade bd-example-modal-lg" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -164,8 +273,8 @@ foreach ($data_anak as $anak) : $id++;
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input type="text" name="nik" placeholder="Masukkan NIK" class="form-control" required>
+                                <label for="nik_anak">NIK Anak</label>
+                                <input type="text" name="nik_anak" placeholder="Masukkan NIK Anak" class="form-control" required>
                             </div>
 
                             <div class="form-group">
@@ -198,8 +307,13 @@ foreach ($data_anak as $anak) : $id++;
                             </div>
 
                             <div class="form-group">
+<<<<<<< HEAD
                                 <label for="lingkar_kepala">Lingkar Kepala</label>
                                 <input type="text" name="lingkar_kepala" placeholder="Lingkar Kepala" class="form-control">
+=======
+                                <label for="lk_lahir">Lingkar Kepala</label>
+                                <input type="text" name="lk_lahir" placeholder="Lingkar Kepala" class="form-control" >
+>>>>>>> 833c49f60826a7db9adb5d6e82cb83cd0f5771ee
                             </div>
 
                             <div class="form-group">

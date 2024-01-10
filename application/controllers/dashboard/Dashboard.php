@@ -21,8 +21,9 @@ class Dashboard extends CI_Controller {
 
         $array = [
             'total_ibu' => $this->M_people->count_ibu(),
+            'total_anak' => $this->M_people->count_anak(),
             'total_kader' => $this->M_people->count_kader(),
-            'total_anak' => $this->M_people->count_anak()
+            'total_dokter' => $this->M_people->count_dokter(),
         ];
 
         $this->load->view('partials/dash_header.php', $title);
