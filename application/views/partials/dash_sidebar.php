@@ -112,10 +112,10 @@
                 <div class="collapse" id="collapseFive" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Daftar:</h6>
-                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/ibu") ?>">Ibu</a>
-                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/balita") ?>">Balita</a>
-                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/anak") ?>">Anak</a>
-                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/remaja") ?>">Remaja</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/panduan_ibu") ?>">Ibu</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/panduan_balita") ?>">Balita</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/panduan_anak") ?>">Anak</a>
+                        <a class="collapse-item" href="<?php echo base_url("dashboard/panduan/panduan_remaja") ?>">Remaja</a>
                     </div>
                 </div>
             </li>
