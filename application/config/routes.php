@@ -60,6 +60,7 @@ $route['register-ibu'] = 'auth/regis_ibu';
 
 // User
 $route['home'] = 'user/home';
+$route['about'] = 'user/about';
 $route['riwayat'] = 'user/riwayat';
 $route['panduan'] = 'user/panduan';
 $route['profil'] = 'user/profil';

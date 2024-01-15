@@ -9,8 +9,8 @@ class People extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('id_petugas') == 0) {
             redirect('auth', 'refresh');
-            $this->load->library('form_validation');
         }
+        $this->load->library('form_validation');
         $this->load->model('dashboard/M_people');
     }
 

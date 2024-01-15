@@ -20,7 +20,7 @@
                     <a class="nav-link" style="color: white;" aria-current="page" href="<?= base_url('home'); ?>">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="#">Tentang</a>
+                    <a class="nav-link" style="color: white;" href="<?= base_url('about'); ?>">Tentang</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="<?= base_url('riwayat'); ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -237,7 +237,7 @@ class M_people extends CI_Model
             "jenis_kelamin" => htmlspecialchars($this->input->post('jenis_kelamin')),
             "lk_lahir" => $this->input->post('lk_lahir'),
             'date_created' => date('Y-m-d H:i:s')
-        ];
+        ];  
         $cekIbu = $this->db->get('ibu')->result_array();
         $ada = false;
         foreach ($cekIbu as $key) : {
