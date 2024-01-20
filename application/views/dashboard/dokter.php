@@ -103,9 +103,19 @@
                                 <input type="text" name="nama" required placeholder="Masukkan Nama" class="form-control" value="<?= $row['nama_dokter'] ?>">
                             </div>
 
+                            <script>
+                                function isNumberKey(evt) {
+                                    var kodeASCII = (evt.which) ? evt.which : event.keyCode
+                                    if (kodeASCII > 31 && (kodeASCII < 48 || kodeASCII > 57)){
+                                    return false;
+                                    }
+                                    return true;
+                                }
+                            </script>
+
                             <div class="form-group">
                                 <label for="kontak">No. Telp</label>
-                                <input type="text" name="kontak" required placeholder="Masukkan No. Telp" class="form-control" value="<?= $row['kontak'] ?>">
+                                <input type="text" onkeypress="return isNumberKey(event)" name="kontak" required placeholder="Masukkan No. Telp" class="form-control" value="<?= $row['kontak'] ?>">
                             </div>
 
                             <div class="modal-footer">

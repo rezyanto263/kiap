@@ -10,7 +10,7 @@
                             <div>
                                 <h5 class="text-center m-0">Profile</h5>
                                 
-                                <img src="<?= base_url('assets/img/profile.jpeg'); ?>" class="rounded-circle my-3" width="200px" height="200px" >
+                                <img src="<?= base_url('image/') ?><?= $ibu['foto']==''?'profile-placeholder.jpg':$ibu['foto'] ?>" class="rounded-circle my-3" width="200px" height="200px" >
                                                 
                             </div>
                         </div>

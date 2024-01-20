@@ -1,19 +1,17 @@
 <!-- Main Start -->
 <main class="container p-3">
 
-    <form action="<?= base_url('user/profil/edit_profil')?>" method="post">
+    <form action="<?= base_url('user/profil/edit_profil')?>" method="post" enctype="multipart/form-data">
         <div class="row d-flex">
             <div class="col-md-4 mb-3">
                 <div class="card p-4 h-100">
                     <div class="card-body d-flex justify-content-center align-items-center h-100">
                         <div>
                             <h5 class="text-center m-0">Profile</h5>
-                            
-                            <img src="" class="rounded-circle my-3" width="200px" height="200px" >
-                            <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-outline-secondary d-block" data-bs-toggle="modal" data-bs-target="#editPhoto">
-                                    Edit Foto
-                                </button>   
+                            <img src="<?= base_url('image/') ?><?= $ibu['foto']==''?'profile-placeholder.jpg':$ibu['foto'] ?>" class="rounded-circle my-3 mx-5" width="200px" height="200px" >
+                            <div class="m-auto">
+                                <p class="text-center">Edit Foto</p>
+                                <input class="form-control" name="userfile" type="file" id="image" size="20">
                             </div>                   
                         </div>
                     </div>
@@ -133,13 +131,13 @@
 <div class="modal fade" id="editPhoto" tabindex="-1" aria-labelledby="editPhotoLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="editPhotoLabel">Edit Foto Profil</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input class="form-control" type="file" id="formFile" name="foto" accept="image/*">                      
+                    <input class="form-control" type="file" id="formFile" name="foto">                      
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>

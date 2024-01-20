@@ -215,83 +215,87 @@ class Riwayat extends CI_Controller {
 
     // Proses Riwayat Pemeriksaan
     public function tambah_riwayat_pemeriksaan() {
-        $cekIdPeriksa = $this->M_riwayat->allData('pemeriksaan');
-        foreach ($cekIdPeriksa as $key) {
-            if (($key['id_periksa']!=$this->input->post('id_periksa'))&&(($key['nik_ibu']!=$this->input->post('nik_ibu'))||($key['nik_anak']!=$this->input->post('nik_anak')))) {
+        $cekIdPeriksaIbu = $this->M_riwayat->cekSatuRiwayat('pemeriksaan', 'id_periksa', $this->input->post('id_periksa'))->row_array();
+        $cekIdPeriksaAnak = $this->M_riwayat->cekSatuRiwayat('anak', 'nik_anak', $this->input->post('nik_anak'))->row_array();
+        $sesuai=false;
+        if (($cekIdPeriksaIbu['nik_ibu']==$cekIdPeriksaAnak['nik_ibu']) || ($cekIdPeriksaIbu['nik_ibu']==$this->input->post('nik_ibu'))) {
+            $sesuai = true;
+        } else {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+            Data Gagal Ditambahkan! Data pemeriksaan tidak sesuai! </div>');   
+
+            redirect('dashboard/riwayat/pemeriksaan');
+        }
+        if ($sesuai==true) {
+            $cekIdPeriksa = $this->M_riwayat->cekSatuRiwayat('riwayat_pemeriksaan', 'id_periksa', $this->input->post('id_periksa'))->num_rows();
+            $cekPasien = ['', $this->input->post('pasien1'), $this->input->post('pasien2')];
+            $pasien = ['', $this->input->post('pasien1'), $this->input->post('pasien2')];
+            $keluhan = ['', $this->input->post('keluhani'), $this->input->post('keluhana')];
+            $keterangan = ['', $this->input->post('keterangani'), $this->input->post('keterangana')];
+            $catatan = ['', $this->input->post('catatani'), $this->input->post('catatana')];
+            $nik = ['', $this->input->post('nik_ibu'), $this->input->post('nik_anak')];
+            if (!is_null($cekPasien[1]) && !is_null($cekPasien[2]) && ($cekIdPeriksa==0)) {
+                $i = 1;
+                while ($i <= 2) {
+                    if ($i == 1) {
+                        $arrayData = array(
+                            'id_periksa' => $this->input->post('id_periksa'),
+                            'keluhan' => $keluhan[$i],
+                            'keterangan' => $keterangan[$i],
+                            'catatan' => $catatan[$i],
+                            'nik_ibu' => $nik[1],
+                            'pasien' => $pasien[$i]
+                        );
+                        $this->M_riwayat->tambahRiwayat('riwayat_pemeriksaan', $arrayData);
+                    } else {
+                        $arrayData = array(
+                            'id_periksa' => $this->input->post('id_periksa'),
+                            'keluhan' => $keluhan[$i],
+                            'keterangan' => $keterangan[$i],
+                            'catatan' => $catatan[$i],
+                            'nik_anak' => $nik[2],
+                            'pasien' => $pasien[$i]
+                        );
+                        $this->M_riwayat->tambahRiwayat('riwayat_pemeriksaan', $arrayData);
+                    }
+                    $i++;
+                }
+                $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+                Data Berhasil Ditambahkan! </div>');    
+                redirect('dashboard/riwayat/pemeriksaan');
+            } else if ((!is_null($cekPasien[1]) || !is_null($cekPasien[2])) && ($cekIdPeriksa==0)) {
+                if (!is_null($cekPasien[1])) {
+                    $arrayData = array(
+                        'id_periksa' => $this->input->post('id_periksa'),
+                        'keluhan' => $keluhan[1],
+                        'keterangan' => $keterangan[1],
+                        'catatan' => $catatan[1],
+                        'nik_ibu' => $nik[1],
+                        'pasien' => $pasien[1]
+                    );
+                } else if (!is_null($cekPasien[2])) {
+                    $arrayData = array(
+                        'id_periksa' => $this->input->post('id_periksa'),
+                        'keluhan' => $keluhan[2],
+                        'keterangan' => $keterangan[2],
+                        'catatan' => $catatan[2],
+                        'nik_anak' => $nik[2],
+                        'pasien' => $pasien[2]
+                    );
+                }
+                $this->M_riwayat->tambahRiwayat('riwayat_pemeriksaan', $arrayData);
+                $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+                Data Berhasil Ditambahkan! </div>');    
+                redirect('dashboard/riwayat/pemeriksaan');
+            }else if(is_null($cekPasien[1]) && is_null($cekPasien[2])) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-                Data Gagal Ditambahkan! Data pemeriksaan tidak sesuai!</div>');
-    
+                Data Gagal Ditambahkan! Pasien harus diisi!</div>'); 
+                redirect('dashboard/riwayat/pemeriksaan');
+            }else {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+                Data Gagal Ditambahkan! Data Pemeriksaan sudah ada!</div>');
                 redirect('dashboard/riwayat/pemeriksaan');
             }
-        }
-        $cekIdPeriksa = $this->M_riwayat->cekSatuRiwayat('riwayat_pemeriksaan', 'id_periksa', $this->input->post('id_periksa'))->num_rows();
-        $cekPasien = ['', $this->input->post('pasien1'), $this->input->post('pasien2')];
-        $pasien = ['', $this->input->post('pasien1'), $this->input->post('pasien2')];
-        $keluhan = ['', $this->input->post('keluhani'), $this->input->post('keluhana')];
-        $keterangan = ['', $this->input->post('keterangani'), $this->input->post('keterangana')];
-        $catatan = ['', $this->input->post('catatani'), $this->input->post('catatana')];
-        $nik = ['', $this->input->post('nik_ibu'), $this->input->post('nik_anak')];
-        if (!is_null($cekPasien[1]) && !is_null($cekPasien[2]) && ($cekIdPeriksa==0)) {
-            $i = 1;
-            while ($i <= 2) {
-                if ($i == 1) {
-                    $arrayData = array(
-                        'id_periksa' => $this->input->post('id_periksa'),
-                        'keluhan' => $keluhan[$i],
-                        'keterangan' => $keterangan[$i],
-                        'catatan' => $catatan[$i],
-                        'nik_ibu' => $nik[1],
-                        'pasien' => $pasien[$i]
-                    );
-                    $this->M_riwayat->tambahRiwayat('riwayat_pemeriksaan', $arrayData);
-                } else {
-                    $arrayData = array(
-                        'id_periksa' => $this->input->post('id_periksa'),
-                        'keluhan' => $keluhan[$i],
-                        'keterangan' => $keterangan[$i],
-                        'catatan' => $catatan[$i],
-                        'nik_anak' => $nik[2],
-                        'pasien' => $pasien[$i]
-                    );
-                    $this->M_riwayat->tambahRiwayat('riwayat_pemeriksaan', $arrayData);
-                }
-                $i++;
-            }
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
-            Data Berhasil Ditambahkan! </div>');    
-            redirect('dashboard/riwayat/pemeriksaan');
-        } else if ((!is_null($cekPasien[1]) || !is_null($cekPasien[2])) && ($cekIdPeriksa==0)) {
-            if (!is_null($cekPasien[1])) {
-                $arrayData = array(
-                    'id_periksa' => $this->input->post('id_periksa'),
-                    'keluhan' => $keluhan[1],
-                    'keterangan' => $keterangan[1],
-                    'catatan' => $catatan[1],
-                    'nik_ibu' => $nik[1],
-                    'pasien' => $pasien[1]
-                );
-            } else if (!is_null($cekPasien[2])) {
-                $arrayData = array(
-                    'id_periksa' => $this->input->post('id_periksa'),
-                    'keluhan' => $keluhan[2],
-                    'keterangan' => $keterangan[2],
-                    'catatan' => $catatan[2],
-                    'nik_anak' => $nik[2],
-                    'pasien' => $pasien[2]
-                );
-            }
-            $this->M_riwayat->tambahRiwayat('riwayat_pemeriksaan', $arrayData);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
-            Data Berhasil Ditambahkan! </div>');    
-            redirect('dashboard/riwayat/pemeriksaan');
-        }else if(is_null($cekPasien[1]) && is_null($cekPasien[2])) {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-            Data Gagal Ditambahkan! Pasien harus diisi!</div>'); 
-            redirect('dashboard/riwayat/pemeriksaan');
-        }else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-            Data Gagal Ditambahkan! Data Pemeriksaan sudah ada!</div>');
-            redirect('dashboard/riwayat/pemeriksaan');
         }
     }   
     public function edit_riwayat_pemeriksaan() {
@@ -301,7 +305,7 @@ class Riwayat extends CI_Controller {
             'keterangan' => $this->input->post('keterangan'),
             'catatan' => $this->input->post('catatan'),
         );
-        $this->M_riwayat->editSatuRiwayat('riwayat_pemeriksaan', $data,'id_periksa', $this->input->post('id_periksa'));
+        $this->M_riwayat->editSatuRiwayat('riwayat_pemeriksaan', $data,'id_periksa', $this->input->post('id'));
         redirect('dashboard/riwayat/pemeriksaan');
     }
     public function hapus_riwayat_pemeriksaan($id_pemeriksaan) {
@@ -419,11 +423,17 @@ class Riwayat extends CI_Controller {
                 redirect('dashboard/riwayat/vaksin');
             }
         }
+        $cekAnak3 = $this->M_riwayat->cekSatuRiwayat('anak', 'nik_anak', $this->input->post('nik_anak'))->row_array();
+        $tgl_lahir1=$cekAnak3['tgl_lahir'];
+        $tgl_vaksin = new DateTime($this->input->post('tgl_vaksin'));
+        $tgl_lahir = new DateTime($tgl_lahir1);
+        $umur = $tgl_vaksin->diff($tgl_lahir);
         $data = array(
             'id_periksa' => $this->input->post('id_periksa'),
             'nik_anak' => $this->input->post('nik_anak'),
             'id_vaksin' => $this->input->post('id_vaksin'),
             'tgl_vaksin' => $this->input->post('tgl_vaksin'),
+            'usia_vaksin' => $umur->y.' Tahun '.$umur->m.' Bulan '.$umur->d.' Hari',
             'catatan' => $this->input->post('catatan'),
         );
         $this->M_riwayat->tambahRiwayat('riwayat_vaksin', $data);
@@ -465,11 +475,17 @@ class Riwayat extends CI_Controller {
                 redirect('dashboard/riwayat/vaksin');
             }
         }
+        $cekAnak4 = $this->M_riwayat->cekSatuRiwayat('anak', 'nik_anak', $this->input->post('nik_anak'))->row_array();
+        $tgl_lahir1=$cekAnak4['tgl_lahir'];
+        $tgl_vaksin = new DateTime($this->input->post('tgl_vaksin'));
+        $tgl_lahir = new DateTime($tgl_lahir1);
+        $umur = $tgl_vaksin->diff($tgl_lahir);
         $update = array(
             'tgl_vaksin' => $this->input->post('tgl_vaksin'),
             'nik_anak' => $this->input->post('nik_anak'),
             'id_vaksin' => $this->input->post('id_vaksin'),
             'nik_anak' => $this->input->post('nik_anak'),
+            'usia_vaksin' => $umur->y.' Tahun '.$umur->m.' Bulan '.$umur->d.' Hari',
             'catatan' => $this->input->post('catatan'),
         );
         $this->M_riwayat->editSatuRiwayat('riwayat_vaksin', $update, 'id', $this->input->post('id'));

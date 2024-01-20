@@ -32,14 +32,10 @@
                         <li><a class="dropdown-item" href="<?= base_url('riwayat'); ?>#vaksin">Vaksin</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="color: white;" href="<?= base_url('panduan'); ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="<?= base_url('panduan'); ?>">
                         Panduan
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="<?= base_url('panduan'); ?>">Anak</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('panduan'); ?>">Ibu</a></li>
-                    </ul>
                 </li>
                 <li class="nav-item dropdown nav-sm-profile">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,7 +62,7 @@
                 <ul class="navbar-nav nav-md-profile">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="rounded-circle ms-3 d-inline border border-3" width="50" src="<?= base_url('assets/');?>img/profile.jpeg" alt="">
+                            <img class="rounded-circle ms-3 d-inline border border-3" width="50px" height="50px" src="<?= base_url('image/'); ?><?= ($this->session->userdata('foto')=='')?'profile-placeholder.jpg':$this->session->userdata('foto')?>" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('profil'); ?>">Profil</a></li>

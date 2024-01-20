@@ -22,8 +22,22 @@
 
 
 
-
-
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop:false,
+        margin:5,
+        nav:true,
+        dots:true,
+        autoplay:true,
+        responsive:{
+            0:{
+                items:1
+            }
+        }
+    });
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src=<?php echo base_url("assets_2/vendor/jquery/jquery.min.js") ?>></script>

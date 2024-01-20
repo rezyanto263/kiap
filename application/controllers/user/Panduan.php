@@ -11,19 +11,23 @@ class Panduan extends CI_Controller {
         if ($this->session->userdata('nik_ibu') == 0) {
             redirect('auth', 'refresh');
         }
+        $this->load->model('dashboard/M_panduan');
+        
     }
     
     public function index()
     {
+        $query['panduan'] = $this->M_panduan->getPanduan();
         $partials = array(
             'header' => 'partials/header',
             'navbar' => 'partials/navbar-panduan',
-            'content' => 'user/panduan',
+            'sidebar' => 'user/sidebar-panduan',
+            'content' => 'user/content-panduan',
             'footer' => 'partials/footer',
             'script' => 'partials/script'
         );
-
-        $this->load->view('master', $partials);
+        $this->load->vars($query);
+        $this->load->view('panduan-master', $partials);
     }
 
 }

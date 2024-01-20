@@ -37,7 +37,7 @@
                             <td><?= $key['judul'] ?></td>
                             <td><?= $key['deskripsi'] ?></td>
                             <td><img src="<?= base_url('image/') ?><?= $key['foto'] ?>" alt="" width="100"></td>
-                            <td><?= $key['isi'] ?></td>
+                            <td><pre><?= $key['isi'] ?></pre></td>
                             <td><?= $key['kategori'] ?></td>
                             <td>
                                 <center>
@@ -77,7 +77,7 @@
 
                         <div class="form-group">
                             <label for="judul">Judul</label>
-                            <input name="judul" type="text" placeholder="Judul" class="form-control" required></input>
+                            <input name="judul" type="text" maxlength="15" placeholder="Judul" class="form-control" required></input>
                         </div>
 
                     </div>
@@ -97,7 +97,7 @@
 
                     <div class="form-group">
                         <label for="isi">Isi</label>
-                        <textarea name="isi" placeholder="Isi" class="form-control" rows="4" required></textarea>
+                        <pre><textarea name="isi" placeholder="Isi" class="form-control" rows="4" required></textarea></pre>
                     </div>
 
                     <input type="text" hidden name="kategori" value="<?= $setKategori ?>">
@@ -140,7 +140,7 @@ foreach ($getPanduan as $row) : $id++;
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('dashboard/panduan/edit_panduan') ?>" method="post">
+                    <form action="<?= base_url('dashboard/panduan/edit_panduan') ?>" method="post" enctype="multipart/form-data">
                         <input type="text" name="id" hidden value="<?= $row['id'] ?>">
 
                         <div class="row">
@@ -151,18 +151,12 @@ foreach ($getPanduan as $row) : $id++;
                                     <input name="judul" type="text" placeholder="Judul" class="form-control" value="<?= $row['judul'] ?>" required></input>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="Deskripsi">Dekripsi</label>
-                                    <textarea type="textarea" name="deskripsi" placeholder="Masukkan Deskripsi" rows="4" class="form-control" required><?= $row['deskripsi'] ?></textarea>
-                                </div>
-
                             </div>
-
-                            <div class="col">
+                            <div class="col-md-6">
 
                                 <div class="form-group ">
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-3 d-flex align-items-center justidy-content-center">
                                             <img src="<?= base_url('image/') . $row['foto']; ?>" class="img-thumbnail">
                                         </div>
                                         <div class="col-sm-9">
@@ -171,25 +165,28 @@ foreach ($getPanduan as $row) : $id++;
                                         </div>
                                     </div>
                                 </div>
+                                
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="isi">Isi</label>
-                                    <input name="isi" type="text" placeholder="Isi" class="form-control" value="<?= $row['isi'] ?>" required></input>
-                                </div>
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label>
+                                <select name="kategori" placeholder="" class="form-select" required>
+                                    <option selected hidden disabled style="display: none;">-- Kategori --</option>
+                                    <option value="ibu" <?= $row['kategori'] == 'ibu' ? 'selected' : '' ?>>Ibu</option>
+                                    <option value="balita" <?= $row['kategori'] == 'balita' ? 'selected' : '' ?>>Balita</option>
+                                    <option value="anak" <?= $row['kategori'] == 'anak' ? 'selected' : '' ?>>Anak</option>
+                                    <option value="remaja" <?= $row['kategori'] == 'remaja' ? 'selected' : '' ?>>Remaja</option>
+                                </select>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="Deskripsi">Dekripsi</label>
+                                <textarea type="textarea" name="deskripsi" placeholder="Masukkan Deskripsi" rows="4" class="form-control" required><?= $row['deskripsi'] ?></textarea>
+                            </div>
 
-
-                                <div class="form-group">
-                                    <label for="kategori">Kategori</label>
-                                    <select name="kategori" placeholder="" class="form-select" required>
-                                        <option selected hidden disabled style="display: none;">-- Kategori --</option>
-                                        <option value="ibu" <?= $row['kategori'] == 'ibu' ? 'selected' : '' ?>>Ibu</option>
-                                        <option value="balita" <?= $row['kategori'] == 'balita' ? 'selected' : '' ?>>Balita</option>
-                                        <option value="anak" <?= $row['kategori'] == 'anak' ? 'selected' : '' ?>>Anak</option>
-                                        <option value="remaja" <?= $row['kategori'] == 'remaja' ? 'selected' : '' ?>>Remaja</option>
-                                    </select>
-                                </div>
-
+                            <div class="form-group">
+                                <label for="isi">Isi</label>
+                                <pre><textarea name="isi" type="text" placeholder="Isi" class="form-control" rows="10" required><?= $row['isi'] ?></textarea></pre>
                             </div>
 
                         </div>

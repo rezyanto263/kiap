@@ -11,6 +11,12 @@ class M_panduan extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function count_panduan()
+    {
+        $data = $this->db->count_all_results('panduan');
+        return $data;
+    }
+
     public function add_panduan()
     {
         $config['upload_path']          = './image/';
@@ -99,12 +105,47 @@ class M_panduan extends CI_Model
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload()) {
+        if (!$this->upload->do_upload('userfile')) {
             $this->session->set_flashdata(
                 'pesan',
                 '<div class="alert alert-danger" role="alert">
             Data Gagal Ditambah! </div>'
             );
+            $judul = $this->input->post('judul', true);
+            $deskripsi = $this->input->post('deskripsi', true);
+            $isi = $this->input->post('isi', true);
+            $kategori = $this->input->post('kategori', true);
+            $id = $this->input->post('id', true);
+
+
+            $data = [
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'foto' => $foto,
+                'isi' => $isi,
+                'kategori' => $kategori,
+            ];
+            $this->db->where('id', $id);
+            $this->db->update('panduan', $data);
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-success" role="alert">
+            Data Berhasil Ditambah! </div>'
+            );
+            switch ($kategori) {
+                case 'ibu':
+                    redirect('dashboard/panduan/panduan_ibu');
+                    break;
+                case 'anak':
+                    redirect('dashboard/panduan/panduan_anak');
+                    break;
+                case 'balita':
+                    redirect('dashboard/panduan/panduan_balita');
+                    break;
+                case 'remaja':
+                    redirect('dashboard/panduan/panduan_remaja');
+                    break;
+            }
             // switch case redirect
             $kategori = $this->input->post('kategori', true);
             switch ($kategori) {

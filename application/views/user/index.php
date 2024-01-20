@@ -137,32 +137,21 @@
                                 <tr class="sticky-top shadow-sm">
                                     <th class="fw-bold">NO</th>
                                     <th class="fw-bold">Tanggal</th>
+                                    <th class="fw-bold">Pasien</th>
                                     <th class="fw-bold">Dokter</th>
-                                    <th class="fw-bold">Keterangan</th>
-                                    <th class="fw-bold">Catatan</th>
-                                    <th class="fw-bold">Catatan</th>
                                     <th class="fw-bold">Catatan</th>
                                 </tr>
                             </thead>
                             <tbody class="text-start">
-                                <tr style="text-align: justify;">
-                                    <th>1</th>
-                                    <td>21-Nov-2023</td>
-                                    <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita totam quam esse modi, labore maxime eligendi dolores tenetur nesciunt beatae. A dolorum cumque iure eveniet eos unde, atque debitis amet.</td>
-                                    <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita totam quam esse modi, labore maxime eligendi dolores tenetur nesciunt beatae. A dolorum cumque iure eveniet eos unde, atque debitis amet.</td>
-                                    <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita totam quam esse modi, labore maxime eligendi dolores tenetur nesciunt beatae. A dolorum cumque iure eveniet eos unde, atque debitis amet.</td>
-                                    <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita totam quam esse modi, labore maxime eligendi dolores tenetur nesciunt beatae. A dolorum cumque iure eveniet eos unde, atque debitis amet.</td>
-                                    <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita totam quam esse modi, labore maxime eligendi dolores tenetur nesciunt beatae. A dolorum cumque iure eveniet eos unde, atque debitis amet.</td>
+                            <?php $i=1; foreach ($pemeriksaan as $key) { ?>
+                                <tr style="text-align: justify; line-height: 20px;">
+                                    <th class="text-center" style="width: 50px;"><?= $i ?></th>
+                                    <td class="text-center" style="width: 100px;"><?= $this->M_riwayat->tanggal_indo($key['tanggal_periksa']) ?></td>
+                                    <td class="text-center" style="width: 80px;"><?= $key['pasien'] ?></td>
+                                    <td class="text-center" style="width: 200px;"><?= $key['nama_dokter'] ?></td>
+                                    <td class="text-start"><?= $key['catatan'] ?></td>
                                 </tr>
-                                <tr style="text-align: justify;">
-                                    <th>2</th>
-                                    <td>22-Jan-2023</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quaerat explicabo minima quia. Dolore et quibusdam dignissimos quam quasi animi, quae suscipit obcaecati ab consequatur natus ipsa odit quia nulla!</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quaerat explicabo minima quia. Dolore et quibusdam dignissimos quam quasi animi, quae suscipit obcaecati ab consequatur natus ipsa odit quia nulla!</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quaerat explicabo minima quia. Dolore et quibusdam dignissimos quam quasi animi, quae suscipit obcaecati ab consequatur natus ipsa odit quia nulla!</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quaerat explicabo minima quia. Dolore et quibusdam dignissimos quam quasi animi, quae suscipit obcaecati ab consequatur natus ipsa odit quia nulla!</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quaerat explicabo minima quia. Dolore et quibusdam dignissimos quam quasi animi, quae suscipit obcaecati ab consequatur natus ipsa odit quia nulla!</td>
-                                </tr>
+                            <?php $i++;} ?>
                             </tbody>
                         </table>
 
@@ -170,10 +159,64 @@
 
                 </div>
                 <div class="tab-pane fade" id="pertumbuhan" role="tabpanel" aria-labelledby="pertumbuhan-tab" tabindex="0">
-                    <img src="<?= base_url('assets/'); ?>img/jumbotron1.png" alt="">
+                    <div class="table-responsive custom-table rounded">
+
+                        <table class="table table-bordered table-hover rounded">
+                            <thead>
+                                <tr class="sticky-top shadow-sm">
+                                    <th class="fw-bold">NO</th>
+                                    <th class="fw-bold">Tanggal</th>
+                                    <th class="fw-bold">Anak</th>
+                                    <th class="fw-bold">Berat Badan</th>
+                                    <th class="fw-bold">Tinggi Badan</th>
+                                    <th class="fw-bold">Lingkar Kepala</th>
+                                    <th class="fw-bold">Catatan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-start">
+                            <?php $i=1; foreach ($pertumbuhan as $key) { ?>
+                                <tr style="text-align: justify; line-height: 20px;">
+                                    <th class="text-center" style="width: 50px;"><?= $i ?></th>
+                                    <td class="text-center" style="width: 100px;"><?= $this->M_riwayat->tanggal_indo($key['tanggal_periksa']) ?></td>
+                                    <td class="text-center" style="width: 200px;"><?= $key['nama_anak'] ?></td>
+                                    <td class="text-center" style="width: 140px;"><?= $key['bb'] ?> kg</td>
+                                    <td class="text-center" style="width: 140px;"><?= $key['tb'] ?> cm</td>
+                                    <td class="text-center" style="width: 140px;"><?= $key['lk'] ?> cm</td>
+                                    <td class="text-start"><?= $key['catatan'] ?></td>
+                                </tr>
+                            <?php $i++;} ?>
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="vaksin" role="tabpanel" aria-labelledby="vaksin-tab" tabindex="0">
-                    <img src="<?= base_url('assets/'); ?>img/logo.png" alt="">
+                    <div class="table-responsive custom-table rounded">
+
+                        <table class="table table-bordered table-hover rounded">
+                            <thead>
+                                <tr class="sticky-top shadow-sm">
+                                    <th class="fw-bold">NO</th>
+                                    <th class="fw-bold">Tanggal</th>
+                                    <th class="fw-bold">Anak</th>
+                                    <th class="fw-bold" >Nama Vaksin</th>
+                                    <th class="fw-bold">Catatan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-start">
+                            <?php $i=1; foreach ($vaksin as $key) { ?>
+                                <tr style="text-align: justify; line-height: 20px;">
+                                    <th class="text-center" style="width: 50px;"><?= $i ?></th>
+                                    <td class="text-center" style="width: 100px;"><?= $this->M_riwayat->tanggal_indo($key['tgl_vaksin']) ?></td>
+                                    <td class="text-center" style="width: 200px;"><?= $key['nama_anak'] ?></td>
+                                    <td class="text-center" style="width: 200px;"><?= $key['nama'] ?></td>
+                                    <td class="text-start"><?= $key['catatan'] ?></td>
+                                </tr>
+                            <?php $i++;} ?>
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
 
             </div>
@@ -188,54 +231,18 @@
 
             <h1 class="text-center" style="font-family: 'Hedvig Letter Serif'; font-weight: 700; color: #F875AA; text-shadow: 1px 1px rgba(0, 0, 0, 0.19);">Panduan</h1>
             <div class="owl-carousel owl-theme my-5">
+                <?php foreach ($panduan as $key) { ?>
                 <div class="item">
-                    <a class="card card-panduan shadow-sm" href="index.html">
-                        <img src="<?= base_url('assets/'); ?>img/panduan-1.jpg" class="card-img-top" alt="...">
+                    <a class="card card-panduan shadow-sm" href="index.html"  style="height: 356px;">
+                        <img src="<?= base_url('image/').$key['foto'] ?>" class="card-img-top" width="219.917px" height="219.917px" alt="...">
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="m-0 p-0 fw-bold mb-2" style="font-size: 18px; color: #F758AA;"><?= $key['judul'] ?></h5>
+                            <p class="card-text" style="font-size: 15px;"><?= htmlspecialchars($key['deskripsi']) ?></p>
                         </div>
                     </a>
                 </div>
-                <div class="item">
-                    <a class="card card-panduan shadow-sm" href="panduan.html">
-                        <img src="<?= base_url('assets/'); ?>img/panduan-2.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a class="card card-panduan shadow-sm" href="panduan.html">
-                        <img src="<?= base_url('assets/'); ?>img/panduan-3.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a class="card card-panduan shadow-sm" href="panduan.html">
-                        <img src="<?= base_url('assets/'); ?>img/panduan-4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a class="card card-panduan shadow-sm" href="panduan.html">
-                        <img src="<?= base_url('assets/'); ?>img/panduan-5.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a class="card card-panduan shadow-sm" href="panduan.html">
-                        <img src="<?= base_url('assets/'); ?>img/panduan-6.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
+                <?php } ?>
+                
             </div>
 
         </div>

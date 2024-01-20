@@ -62,6 +62,7 @@ class Auth extends CI_Controller {
                     $dataIbu = array(
                         'nik_ibu' => $ibu->nik_ibu,
                         'nama' => $ibu->nama_ibu,
+                        'foto' => $ibu->foto
                     );
 
                     $this->session->set_userdata($dataIbu);
@@ -151,7 +152,8 @@ class Auth extends CI_Controller {
         ]);
 
         $this->form_validation->set_rules('no_telp', 'No_telp', 'trim|required|numeric|max_length[13]', [
-            'required' => 'No. Handphone harus diisi!'
+            'required' => 'No. Handphone harus diisi!',
+            'max_length' => 'No. Handphone maksimal 13 angka!'
         ]);
 
         $this->form_validation->set_rules('agama', 'Agama', 'trim|required', [

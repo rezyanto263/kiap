@@ -30,13 +30,9 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="color: white;" href="<?= base_url('panduan'); ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" style="color: white;" href="<?= base_url('panduan'); ?>">
                         Panduan
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="<?= base_url('panduan'); ?>">Anak</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('panduan'); ?>">Ibu</a></li>
-                    </ul>
                 </li>
                 <li class="nav-item dropdown nav-sm-profile">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +57,7 @@
                 <ul class="navbar-nav nav-md-profile">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="rounded-circle ms-3 d-inline border border-3" width="50" src="<?= base_url('assets/'); ?>img/profile.jpeg" alt="">
+                            <img class="rounded-circle ms-3 d-inline border border-3" width="50px" height="50px" src="<?= base_url('image/'); ?><?= ($this->session->userdata('foto')=='')?'profile-placeholder.jpg':$this->session->userdata('foto')?>" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('profil'); ?>">Profil</a></li>
@@ -80,22 +76,68 @@
 <!-- Offcanvas Panduan Start -->
 <div class="offcanvas offcanvas-start" style="width: 75dvw;" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <h3 class="offcanvas-title fw-bold" id="offcanvasExampleLabel" style="font-family: 'Hedvig Letter Serif'; color: #F758AA;"><i class="fa-solid fa-book-open-reader fs-4 mb-2 me-2"></i>    Menu Panduan</h3>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <div>
-            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+        <div class="w-100 p-2 rounded fs-5 fw-bold text-white" style="background-color: #F758AA;">
+            <i class="fa-solid fa-person-breastfeeding me-2 ms-1" ></i>
+            Ibu
         </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            Dropdown button
+        <div class="nav flex-column nav-pills custom-pills m-0 rounded ms-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-panduan-home-tab" data-bs-toggle="pill" data-bs-target="#v-panduan-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" hidden>Home</button>
+            <?php foreach($panduan as $key) : 
+                if ($key['kategori']=='ibu') {
+            ?>
+            <button class="nav-link my-2 mx-0 text-start btn-sidebar-panduan" id="v-panduan<?= $key['id'] ?>-tab" data-bs-toggle="pill" data-bs-target="#v-panduan<?= $key['id'] ?>" type="button" role="tab" aria-controls="v-panduan<?= $key['id'] ?>" aria-selected="false">
+                <?= $key['judul'] ?>
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <?php }endforeach; ?>
+        </div>
+
+        <div class="w-100 p-2 rounded fs-5 fw-bold text-white mt-3" style="background-color: #F758AA;">
+            <i class="fa-solid fa-baby me-2 ms-1" ></i>
+            Balita
+        </div>
+        <div class="nav flex-column nav-pills custom-pills m-0 rounded ms-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-panduan-home-tab" data-bs-toggle="pill" data-bs-target="#v-panduan-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" hidden>Home</button>
+            <?php foreach($panduan as $key) : 
+                if ($key['kategori']=='balita') {
+            ?>
+            <button class="nav-link my-2 mx-0 text-start btn-sidebar-panduan" id="v-panduan<?= $key['id'] ?>-tab" data-bs-toggle="pill" data-bs-target="#v-panduan<?= $key['id'] ?>" type="button" role="tab" aria-controls="v-panduan<?= $key['id'] ?>" aria-selected="false">
+                <?= $key['judul'] ?>
+            </button>
+            <?php }endforeach; ?>
+        </div>
+
+        <div class="w-100 p-2 rounded fs-5 fw-bold text-white mt-3" style="background-color: #F758AA;">
+            <i class="fa-solid fa-children me-2" ></i>
+            Anak - Anak
+        </div>
+        <div class="nav flex-column nav-pills custom-pills m-0 rounded ms-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-panduan-home-tab" data-bs-toggle="pill" data-bs-target="#v-panduan-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" hidden>Home</button>
+            <?php foreach($panduan as $key) : 
+                if ($key['kategori']=='anak') {
+            ?>
+            <button class="nav-link my-2 mx-0 text-start btn-sidebar-panduan" id="v-panduan<?= $key['id'] ?>-tab" data-bs-toggle="pill" data-bs-target="#v-panduan<?= $key['id'] ?>" type="button" role="tab" aria-controls="v-panduan<?= $key['id'] ?>" aria-selected="false">
+                <?= $key['judul'] ?>
+            </button>
+            <?php }endforeach; ?>
+        </div>
+
+        <div class="w-100 p-2 rounded fs-5 fw-bold text-white mt-3" style="background-color: #F758AA;">
+            <i class="fa-solid fa-person fs-3 me-2 ms-1" ></i>
+            Remaja
+        </div>
+        <div class="nav flex-column nav-pills custom-pills m-0 rounded ms-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-panduan-home-tab" data-bs-toggle="pill" data-bs-target="#v-panduan-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" hidden>Home</button>
+            <?php foreach($panduan as $key) : 
+                if ($key['kategori']=='remaja') {
+            ?>
+            <button class="nav-link my-2 mx-0 text-start btn-sidebar-panduan" id="v-panduan<?= $key['id'] ?>-tab" data-bs-toggle="pill" data-bs-target="#v-panduan<?= $key['id'] ?>" type="button" role="tab" aria-controls="v-panduan<?= $key['id'] ?>" aria-selected="false">
+                <?= $key['judul'] ?>
+            </button>
+            <?php }endforeach; ?>
         </div>
     </div>
 </div>

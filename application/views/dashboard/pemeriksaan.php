@@ -36,8 +36,8 @@
                         <tr>
                             <td><?= $key['id_periksa'] ?></td>
                             <td><?= $key['pasien'] ?></td>
-                            <td><?= $key['nik_anak'] ?></td>
-                            <td><?= $key['nik_ibu'] ?></td>
+                            <td><?= is_null($key['nik_anak'])?'-':$key['nik_anak'] ?></td>
+                            <td><?= is_null($key['nik_ibu'])?'-':$key['nik_ibu'] ?></td>
                             <td><?= $key['keluhan'] ?></td>
                             <td><?= $key['keterangan'] ?></td>
                             <td><?= $key['catatan'] ?></td>
@@ -217,7 +217,7 @@ foreach ($tb_pemeriksaan as $row) :
                                 <option selected hidden disabled>-- Ibu --</option>
                                 <?php foreach ($daftar_periksa as $key) {
                                     foreach ($ibu as $value) {
-                                        if ($key['nik_ibu']==$value['nik_ibu']) {
+                                        if (($key['nik_ibu']==$value['nik_ibu'])&&($key['nik_ibu']==$row['nik_ibu'])&&($key['id_periksa']==$row['id_periksa'])) {
                                 ?>
                                     <option value="<?= $key['nik_ibu']; ?>" <?= ($key['nik_ibu']==$row['nik_ibu'])?'selected':''; ?>><?= $key['id_periksa']; ?> | <?=$value['nama_ibu']; ?></option>
                                 <?php
@@ -290,7 +290,7 @@ foreach ($tb_pemeriksaan as $row) :
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="<?= base_url() ?>dashboard/riwayat/hapus_riwayat_pertumbuhan/<?= $row['id_periksa'] ?>">Hapus</a>
+                    <a class="btn btn-danger" href="<?= base_url() ?>dashboard/riwayat/hapus_riwayat_pemeriksaan/<?= $row['id_periksa'] ?>">Hapus</a>
                 </div>
             </div>
         </div>

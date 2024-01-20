@@ -12,6 +12,9 @@ class Dashboard extends CI_Controller {
             redirect('auth', 'refresh');
         }
         $this->load->model('dashboard/M_people');
+        $this->load->model('dashboard/M_riwayat');
+        $this->load->model('dashboard/M_panduan');
+        $this->load->model('dashboard/M_antrian');
     }
 
 
@@ -24,6 +27,9 @@ class Dashboard extends CI_Controller {
             'total_anak' => $this->M_people->count_anak(),
             'total_kader' => $this->M_people->count_kader(),
             'total_dokter' => $this->M_people->count_dokter(),
+            'total_vaksin' => $this->M_riwayat->count_vaksin(),
+            'total_panduan' => $this->M_panduan->count_panduan(),
+            'antrian' => $this->M_antrian->getAntrian(),
         ];
 
         $this->load->view('partials/dash_header.php', $title);
@@ -31,6 +37,10 @@ class Dashboard extends CI_Controller {
         $this->load->view('partials/dash_topbar.php');
         $this->load->view('dashboard/dashboard', $array);
         $this->load->view('partials/dash_footer.php');
+    }
+
+    public function tambah_antrian() {
+        
     }
 
 }

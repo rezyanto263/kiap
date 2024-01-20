@@ -11,7 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $('.owl-carousel').owlCarousel({
-        loop:true,
+        loop:false,
         margin:5,
         nav:true,
         dots:false,
@@ -64,8 +64,9 @@
 <!-- Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<?php foreach ($pertumbuhan as $key) { ?>
 <script>
-    const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('<?= $key['nik_anak'] ?>');
 
     var myChart = new Chart(ctx, {
         type: 'scatter',
@@ -73,20 +74,21 @@
             datasets: [{
                 type: 'line',
                 label: 'Lingkar Kepala',
-                data: [10, 15, 20, 25],
+                data: [<?php foreach($pertumbuhan as $key) {$i=0; if($key['nik_ibu']==$this->session->userdata('nik_ibu')){if($i==0){echo $key['lk_lahir'].', ';}echo $key['lk'].', ';}} ?>],
                 yAxisID: 'Centimeter'
                 }, {
                 type: 'line',
                 label: 'Tinggi Badan',
-                data: [10, 20, 30, 40],
+                data: [<?php foreach($pertumbuhan as $key) {$i=0; if($key['nik_ibu']==$this->session->userdata('nik_ibu')){if($i==0){echo $key['tb_lahir'].', ';}echo $key['tb'].', ';}} ?>],
                 yAxisID: 'Centimeter'
                 }, {
                 type: 'line',
                 label: 'Berat Badan',
-                data: [1, 2, 3, 4],
+                data: [<?php foreach($pertumbuhan as $key) {$i=0; if($key['nik_ibu']==$this->session->userdata('nik_ibu')){if($i==0){echo $key['bb_lahir'].', ';}echo $key['bb'].', ';}} ?>],
                 yAxisID: 'Kilogram'
                 }],
-            labels: ['Januari', 'Februari', 'Maret', 'April']
+            labels: [<?php foreach($pertumbuhan as $key) {$i=0; if($key['nik_ibu']==$this->session->userdata('nik_ibu')){if($i==0){$bulan = $this->M_riwayat->tanggal_indo($key["tgl_lahir"]); echo '"'.$bulan.'", ';}$bulan = $this->M_riwayat->tanggal_indo($key["tanggal_periksa"]); echo '"'.$bulan.'", '; }} ?>]
+            
         },
         options: {
             responsive: true,
@@ -102,7 +104,7 @@
                     }
                 },
                 Kilogram: {
-                    max: 10,
+                    max: 50,
                     beginAtZero: true,
                     type: 'linear',
                     position: 'right',
@@ -113,6 +115,8 @@
                         display: false
                     }
                 }
+                
+            }
             },
             plugins: {
                 tooltip: {
@@ -131,5 +135,6 @@
                 }
             }
         }
-    });
+    );
 </script>
+<?php } ?>

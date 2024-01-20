@@ -410,6 +410,24 @@ thead {
     box-shadow: 0 0 8px 1px rgba(248, 117, 170, 0.6);
 }
 
+.btn-sidebar-panduan:active, 
+.btn-sidebar-panduan:focus, 
+.btn-sidebar-panduan:focus-visible {
+	background-color: #F7F7F7 !important;
+	color: #F875AA !important;
+	box-shadow: none !important;
+}
+
+.btn-sidebar-panduan {
+	background-color: #FFFFFF !important;
+	color: #F875AA !important;
+}
+
+.btn-sidebar-panduan:hover {
+	color: #F875AA !important;
+	background-color: #F7F7F7 !important;
+}
+
 @keyframes growDown {
 	0% {
 		transform: scaleY(0);

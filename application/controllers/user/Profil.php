@@ -20,7 +20,7 @@ class Profil extends CI_Controller {
         $data['ibu'] = $this->M_profil->tampil($ibu);
         $partials = array(
             'header' => 'partials/header',
-            'navbar' => 'partials/navbar-panduan',
+            'navbar' => 'partials/navbar',
             'content' => 'user/profile/index',
             'footer' => 'partials/footer',
             'script' => 'partials/script'

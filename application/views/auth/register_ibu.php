@@ -18,7 +18,7 @@
                                 </div>
 
                                 <div class="mb-4 text-start">
-                                    <input type="text" class="form-control" placeholder="NIK" name="nik" value="<?= set_value('nik_ibu') ?>" onkeypress="return isNumberKey(event)">
+                                    <input type="text" class="form-control" placeholder="NIK" name="nik" value="<?= set_value('nik_ibu') ?>" maxlenght="16" minlength="16" onkeypress="return isNumberKey(event)">
                                     <?= form_error('nik', '<small class="text-danger pl-5">', '</small>') ?>
                                 </div>
 
